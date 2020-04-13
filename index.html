@@ -250,27 +250,136 @@ count a=111;v25*12v2*12
 
 
   
-    <article id="post-vuejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vuejs2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/13/vuejs/">vue.js基础语法</a>
+      <a class="article-title" href="/2019/03/17/vuejs2/">vue.js笔记2</a>
     </h1>
   
 
         
-        <a href="/2019/04/13/vuejs/" class="archive-article-date">
-  	<time datetime="2019-04-13T08:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/03/17/vuejs2/" class="archive-article-date">
+  	<time datetime="2019-03-17T09:01:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        &#123;&#123;myName&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">      &#123;&#123;lastLoadTime&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        现在我们为每个 todo-item 提供 todo 对象</span></span><br><span class="line"><span class="comment">        todo 对象是变量，即其内容可以是动态的。</span></span><br><span class="line"><span class="comment">        我们也需要为每个组件提供一个“key”，稍后再</span></span><br><span class="line"><span class="comment">        作详细解释。</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">list-a</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"item in aList"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:str</span>=<span class="string">"item"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:key</span>=<span class="string">"item.id"</span></span></span><br><span class="line"><span class="tag">      &gt;</span><span class="tag">&lt;/<span class="name">list-a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el:<span class="string">'#app'</span>,</span></span><br><span class="line">    data:&#123;</span><br><span class="line"><span class="actionscript">        myName:<span class="string">'guanran'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-2'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="javascript">    lastLoadTime: <span class="string">'页面加载于 '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString()</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app5 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-5'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="actionscript">    message: <span class="string">'Hello Vue.js!'</span></span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line"><span class="actionscript">    reverseMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript">Vue.component(<span class="string">'list-a'</span>, &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">// todo-item 组件现在接受一个</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// "prop"，类似于一个自定义 attribute。</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// 这个 prop 名为 todo。</span></span></span><br><span class="line"><span class="actionscript">  props: [<span class="string">'str'</span>],</span></span><br><span class="line"><span class="handlebars"><span class="xml">  template: '<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; str.text &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span>'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-7'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    aList: [</span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">0</span>, text: <span class="string">'蔬菜'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">1</span>, text: <span class="string">'奶酪'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">2</span>, text: <span class="string">'随便其它什么人吃的东西'</span> &#125;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p v-if="seen">现在你看到我了</p>
+这里，v-if 指令将根据表达式 seen 的值的真假来插入/移除 <p> 元素。
+
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p><a v-bind:href="url">…</a><br>在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。</p>
+<h2 id="动态参数"><a href="#动态参数" class="headerlink" title="动态参数"></a>动态参数</h2><p>&lt;a v-bind:[attributeName]=”url”&gt; … </a><br>这里的 attributeName 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的 Vue 实例有一个 data 属性 attributeName，其值为 “href”，那么这个绑定将等价于 v-bind:href。</p>
+<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p>修饰符 (modifier) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
+<form v-on:submit.prevent="onSubmit">...</form>
+
+<p>@click.stop=”dosomething”<br>应用：阻止冒泡</p>
+<p>v-bind:href 缩写 :href  响应式地更新  HTML attribute</p>
+<p>v-on:click缩写 @click   于监听 DOM 事件</p>
+<h1 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 computed</h1><p>计算属性是基于它们的响应式依赖进行缓存的 有缓存的 需要多次调用的<br>计算属性默认只有 getter，不过在需要时你也可以提供一个 setter</p>
+<div id="example">
+  <p>Original message: ""</p>
+  <p>Computed reversed message: ""</p></div>
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+
+<h1 id="侦听属性watch"><a href="#侦听属性watch" class="headerlink" title="侦听属性watch"></a>侦听属性watch</h1><p>当你有一些数据需要随着其它数据变动而变动时<br>当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。</p>
+<h1 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h1><div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
+和如下 data：
+data: {
+  isActive: true,
+  hasError: false
+}
+结果渲染为：
+<div class="static active"></div>
+
+<p>绑定的数据对象不必内联定义在模板里：</p>
+<div v-bind:class="classObject"></div>
+data: {
+  classObject: {
+    active: true,
+    'text-danger': false
+  }
+}
+如果你也想根据条件切换列表中的 class，可以用三元表达式：
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+
+
+<p>v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名：</p>
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+data: {
+  activeColor: 'red',
+  fontSize: 30
+}
+
+<div v-bind:style="styleObject"></div>
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。</p>
+<h1 v-if="awesome">Vue is awesome!</h1>
+因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+<template v-if="ok">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p></template>
+
+<p>你可以使用 v-else 指令来表示 v-if 的“else 块”：</p>
+<div v-if="Math.random() > 0.5">
+  Now you see me</div><div v-else>
+  Now you don't</div>
+
+<p>这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key 属性即可</p>
+<h1 v-show="ok">Hello!</h1>
+不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。
+v-show 不支持 <template> 元素，也不支持 v-else。
+一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。</p>
+<ul id="example-1">
+  <li v-for="item in items" :key="item.message">
+    
+  </li></ul>
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+
+<div v-for="(value, name, index) in object"> . :  </div>
+
+
+<h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
+<p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
+<h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>
+
       
 
       
@@ -304,7 +413,91 @@ count a=111;v25*12v2*12
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/13/vuejs/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/17/vuejs2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vuejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/13/vuejs/">vue.js基础语法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/13/vuejs/" class="archive-article-date">
+  	<time datetime="2019-03-13T04:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        &#123;&#123;myName&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">      &#123;&#123;lastLoadTime&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        现在我们为每个 todo-item 提供 todo 对象</span></span><br><span class="line"><span class="comment">        todo 对象是变量，即其内容可以是动态的。</span></span><br><span class="line"><span class="comment">        我们也需要为每个组件提供一个“key”，稍后再</span></span><br><span class="line"><span class="comment">        作详细解释。</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">list-a</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"item in aList"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:str</span>=<span class="string">"item"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:key</span>=<span class="string">"item.id"</span></span></span><br><span class="line"><span class="tag">      &gt;</span><span class="tag">&lt;/<span class="name">list-a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el:<span class="string">'#app'</span>,</span></span><br><span class="line">    data:&#123;</span><br><span class="line"><span class="actionscript">        myName:<span class="string">'guanran'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-2'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="javascript">    lastLoadTime: <span class="string">'页面加载于 '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString()</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app5 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-5'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="actionscript">    message: <span class="string">'Hello Vue.js!'</span></span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line"><span class="actionscript">    reverseMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript">Vue.component(<span class="string">'list-a'</span>, &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">// todo-item 组件现在接受一个</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// "prop"，类似于一个自定义 attribute。</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// 这个 prop 名为 todo。</span></span></span><br><span class="line"><span class="actionscript">  props: [<span class="string">'str'</span>],</span></span><br><span class="line"><span class="handlebars"><span class="xml">  template: '<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; str.text &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span>'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-7'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    aList: [</span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">0</span>, text: <span class="string">'蔬菜'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">1</span>, text: <span class="string">'奶酪'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">2</span>, text: <span class="string">'随便其它什么人吃的东西'</span> &#125;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/13/vuejs/">展开全文 >></a>
         </p>
       
 

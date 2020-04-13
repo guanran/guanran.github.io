@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://guanran.github.io">
-  <title>PDF2SWF | Hello World</title>
+  <title>vue.js笔记2 | Hello World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将PDF转换为SWF文件在处理在线阅读PDF文件时，可以将PDF文件转换为SWF的方式。使用SWFTOOLS工具可以实现格式转换。 工具下载：http:&#x2F;&#x2F;www.swftools.org&#x2F;download.html swftools提供了： font2swf.exe  gif2swf.exe  gpdf2swf.exe  jpeg2swf.exe  pdf2swf.exe  png2swf.ex">
+  <meta name="description" content="指令现在你看到我了 这里，v-if 指令将根据表达式 seen 的值的真假来插入&#x2F;移除  元素。  参数…在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。 动态参数&lt;a v-bind:[attributeName]&#x3D;”url”&gt; … 这里的 attributeName 会被作为一个 JavaScript 表达式进行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PDF2SWF">
-<meta property="og:url" content="https://guanran.github.io/2017/07/13/PDF2SWF/index.html">
+<meta property="og:title" content="vue.js笔记2">
+<meta property="og:url" content="https://guanran.github.io/2019/03/17/vuejs2/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="将PDF转换为SWF文件在处理在线阅读PDF文件时，可以将PDF文件转换为SWF的方式。使用SWFTOOLS工具可以实现格式转换。 工具下载：http:&#x2F;&#x2F;www.swftools.org&#x2F;download.html swftools提供了： font2swf.exe  gif2swf.exe  gpdf2swf.exe  jpeg2swf.exe  pdf2swf.exe  png2swf.ex">
+<meta property="og:description" content="指令现在你看到我了 这里，v-if 指令将根据表达式 seen 的值的真假来插入&#x2F;移除  元素。  参数…在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。 动态参数&lt;a v-bind:[attributeName]&#x3D;”url”&gt; … 这里的 attributeName 会被作为一个 JavaScript 表达式进行">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2017-07-13T03:27:12.000Z">
-<meta property="article:modified_time" content="2020-04-09T15:04:46.691Z">
+<meta property="article:published_time" content="2019-03-17T09:01:54.000Z">
+<meta property="article:modified_time" content="2020-04-13T09:07:01.826Z">
 <meta property="article:author" content="guanran">
 <meta property="article:tag" content="-技术分享">
 <meta name="twitter:card" content="summary">
@@ -155,44 +155,136 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PDF2SWF" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vuejs2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      PDF2SWF
+      vue.js笔记2
     </h1>
   
 
         
-        <a href="/2017/07/13/PDF2SWF/" class="archive-article-date">
-  	<time datetime="2017-07-13T03:27:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-13</time>
+        <a href="/2019/03/17/vuejs2/" class="archive-article-date">
+  	<time datetime="2019-03-17T09:01:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="将PDF转换为SWF文件"><a href="#将PDF转换为SWF文件" class="headerlink" title="将PDF转换为SWF文件"></a>将PDF转换为SWF文件</h1><p>在处理在线阅读PDF文件时，可以将PDF文件转换为SWF的方式。使用SWFTOOLS工具可以实现格式转换。</p>
-<p>工具下载：<a href="http://www.swftools.org/download.html" target="_blank" rel="noopener">http://www.swftools.org/download.html</a></p>
-<p>swftools提供了：</p>
-<pre><code>font2swf.exe
+        <h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p v-if="seen">现在你看到我了</p>
+这里，v-if 指令将根据表达式 seen 的值的真假来插入/移除 <p> 元素。
 
-gif2swf.exe
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p><a v-bind:href="url">…</a><br>在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。</p>
+<h2 id="动态参数"><a href="#动态参数" class="headerlink" title="动态参数"></a>动态参数</h2><p>&lt;a v-bind:[attributeName]=”url”&gt; … </a><br>这里的 attributeName 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的 Vue 实例有一个 data 属性 attributeName，其值为 “href”，那么这个绑定将等价于 v-bind:href。</p>
+<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p>修饰符 (modifier) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
+<form v-on:submit.prevent="onSubmit">...</form>
 
-gpdf2swf.exe
+<p>@click.stop=”dosomething”<br>应用：阻止冒泡</p>
+<p>v-bind:href 缩写 :href  响应式地更新  HTML attribute</p>
+<p>v-on:click缩写 @click   于监听 DOM 事件</p>
+<h1 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 computed</h1><p>计算属性是基于它们的响应式依赖进行缓存的 有缓存的 需要多次调用的<br>计算属性默认只有 getter，不过在需要时你也可以提供一个 setter</p>
+<div id="example">
+  <p>Original message: ""</p>
+  <p>Computed reversed message: ""</p></div>
+var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
 
-jpeg2swf.exe
+<h1 id="侦听属性watch"><a href="#侦听属性watch" class="headerlink" title="侦听属性watch"></a>侦听属性watch</h1><p>当你有一些数据需要随着其它数据变动而变动时<br>当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。</p>
+<h1 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h1><div
+  class="static"
+  v-bind:class="{ active: isActive, 'text-danger': hasError }"
+></div>
+和如下 data：
+data: {
+  isActive: true,
+  hasError: false
+}
+结果渲染为：
+<div class="static active"></div>
 
-pdf2swf.exe
+<p>绑定的数据对象不必内联定义在模板里：</p>
+<div v-bind:class="classObject"></div>
+data: {
+  classObject: {
+    active: true,
+    'text-danger': false
+  }
+}
+如果你也想根据条件切换列表中的 class，可以用三元表达式：
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
 
-png2swf.exe
 
-wav2swf.exe</code></pre><p>这里只介绍pdf2swf.exe的使用<br><a href="http://blog.csdn.net/cocolee100/article/details/5009342" target="_blank" rel="noopener">工具参考</a></p>
-<p>代码示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;summary&gt;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; 将PDF转换为SWF文件</span><br><span class="line">    &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; &lt;param name&#x3D;&quot;pdfPath&quot;&gt;PDF文件路径&lt;&#x2F;param&gt;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; &lt;param name&#x3D;&quot;swfPath&quot;&gt;SWF文件路径&lt;&#x2F;param&gt;</span><br><span class="line">    &#x2F;&#x2F;&#x2F; &lt;param name&#x3D;&quot;page&quot;&gt;&lt;&#x2F;param&gt;</span><br><span class="line">    public static void ConvertToSwf(string pdfPath, string swfPath, int page)</span><br><span class="line">    &#123;</span><br><span class="line">        try</span><br><span class="line">        &#123;</span><br><span class="line">            string exe &#x3D; HttpContext.Current.Server.MapPath(EL_Config.Tools.Pdf2Swf.Url);</span><br><span class="line">            if (!File.Exists(exe))</span><br><span class="line">            &#123;</span><br><span class="line">                throw new ApplicationException(&quot;Can not find: &quot; + exe);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            StringBuilder sb &#x3D; new StringBuilder();</span><br><span class="line">            sb.Append(&quot; -o \&quot;&quot; + swfPath + &quot;\&quot;&quot;);&#x2F;&#x2F;output</span><br><span class="line">            sb.Append(&quot; -z&quot;);</span><br><span class="line">            sb.Append(&quot; -s flashversion&#x3D;9&quot;);&#x2F;&#x2F;flash version</span><br><span class="line">            sb.Append(&quot; -s disablelinks&quot;);&#x2F;&#x2F;禁止PDF里面的链接</span><br><span class="line">            sb.Append(&quot; -p &quot; + &quot;1&quot; + &quot;-&quot; + page);&#x2F;&#x2F;page range</span><br><span class="line">            sb.Append(&quot; -j 100&quot;);&#x2F;&#x2F;Set quality of embedded jpeg pictures to quality. 0 is worst (small), 100 is best (big). (default:85)</span><br><span class="line">            sb.Append(&quot; \&quot;&quot; + pdfPath + &quot;\&quot;&quot;);&#x2F;&#x2F;input</span><br><span class="line"></span><br><span class="line">            System.Diagnostics.Process proc &#x3D; new System.Diagnostics.Process();</span><br><span class="line">            proc.StartInfo.FileName &#x3D; exe;</span><br><span class="line">            proc.StartInfo.Arguments &#x3D; sb.ToString();</span><br><span class="line">            proc.StartInfo.WindowStyle &#x3D; System.Diagnostics.ProcessWindowStyle.Hidden;</span><br><span class="line">            proc.Start();</span><br><span class="line">            proc.WaitForExit();</span><br><span class="line">            proc.Close();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        catch (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            throw ex;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名：</p>
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+data: {
+  activeColor: 'red',
+  fontSize: 30
+}
+
+<div v-bind:style="styleObject"></div>
+data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+
+<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。</p>
+<h1 v-if="awesome">Vue is awesome!</h1>
+因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+<template v-if="ok">
+  <h1>Title</h1>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p></template>
+
+<p>你可以使用 v-else 指令来表示 v-if 的“else 块”：</p>
+<div v-if="Math.random() > 0.5">
+  Now you see me</div><div v-else>
+  Now you don't</div>
+
+<p>这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key 属性即可</p>
+<h1 v-show="ok">Hello!</h1>
+不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。
+v-show 不支持 <template> 元素，也不支持 v-else。
+一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
+
+<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。</p>
+<ul id="example-1">
+  <li v-for="item in items" :key="item.message">
+    
+  </li></ul>
+var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+
+<div v-for="(value, name, index) in object"> . :  </div>
+
+
+<h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
+<p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
+<h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>
+
       
 
       
@@ -243,7 +335,7 @@ wav2swf.exe</code></pre><p>这里只介绍pdf2swf.exe的使用<br><a href="http:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/工作//" class="article-tag-list-link color4">-工作</a>
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
         		</li>
       		
 		</ul>
@@ -298,7 +390,7 @@ wav2swf.exe</code></pre><p>这里只介绍pdf2swf.exe的使用<br><a href="http:
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://guanran.github.io/2017/07/13/PDF2SWF/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://guanran.github.io/2019/03/17/vuejs2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -312,18 +404,18 @@ wav2swf.exe</code></pre><p>这里只介绍pdf2swf.exe的使用<br><a href="http:
   
 <nav id="article-nav">
   
-    <a href="/2019/03/13/vuejs/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/01/myjl/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vue.js基础语法
+          简历信息
         
       </div>
     </a>
   
   
-    <a href="/2017/04/09/heike/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">heike</div>
+    <a href="/2019/03/13/vuejs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue.js基础语法</div>
       <i class="icon-circle-right"></i>
     </a>
   
