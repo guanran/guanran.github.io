@@ -81,7 +81,7 @@
 		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
-					<a class="qq" target="_blank" href="/625097445" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="qqto:625097445" title="qq"><i class="icon-qq"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:guanransky@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
@@ -122,7 +122,7 @@
 			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
-						<a class="qq" target="_blank" href="/625097445" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="qqto:625097445" title="qq"><i class="icon-qq"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:guanransky@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
@@ -221,6 +221,90 @@ count a=111;v25*12v2*12
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/05/01/myjl/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vuejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/13/vuejs/">vue.js基础语法</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/13/vuejs/" class="archive-article-date">
+  	<time datetime="2019-04-13T08:53:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        &#123;&#123;myName&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">      &#123;&#123;lastLoadTime&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-5"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app-7"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        现在我们为每个 todo-item 提供 todo 对象</span></span><br><span class="line"><span class="comment">        todo 对象是变量，即其内容可以是动态的。</span></span><br><span class="line"><span class="comment">        我们也需要为每个组件提供一个“key”，稍后再</span></span><br><span class="line"><span class="comment">        作详细解释。</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">list-a</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">"item in aList"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:str</span>=<span class="string">"item"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-bind:key</span>=<span class="string">"item.id"</span></span></span><br><span class="line"><span class="tag">      &gt;</span><span class="tag">&lt;/<span class="name">list-a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">    el:<span class="string">'#app'</span>,</span></span><br><span class="line">    data:&#123;</span><br><span class="line"><span class="actionscript">        myName:<span class="string">'guanran'</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app2 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-2'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="javascript">    lastLoadTime: <span class="string">'页面加载于 '</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleString()</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app5 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-5'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line"><span class="actionscript">    message: <span class="string">'Hello Vue.js!'</span></span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line"><span class="actionscript">    reverseMessage: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">this</span>.message = <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript">Vue.component(<span class="string">'list-a'</span>, &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="comment">// todo-item 组件现在接受一个</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// "prop"，类似于一个自定义 attribute。</span></span></span><br><span class="line"><span class="actionscript">  <span class="comment">// 这个 prop 名为 todo。</span></span></span><br><span class="line"><span class="actionscript">  props: [<span class="string">'str'</span>],</span></span><br><span class="line"><span class="handlebars"><span class="xml">  template: '<span class="tag">&lt;<span class="name">li</span>&gt;</span></span><span class="template-variable">&#123;&#123; str.text &#125;&#125;</span><span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span>'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> app7 = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#app-7'</span>,</span></span><br><span class="line">  data: &#123;</span><br><span class="line">    aList: [</span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">0</span>, text: <span class="string">'蔬菜'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">1</span>, text: <span class="string">'奶酪'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">      &#123; id: <span class="number">2</span>, text: <span class="string">'随便其它什么人吃的东西'</span> &#125;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/13/vuejs/">展开全文 >></a>
         </p>
       
 
