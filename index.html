@@ -173,15 +173,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <div id="article_content" class="article_content clearfix">
-            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-688b67d66a.css">
-                            <div id="content_views" class="markdown_views prism-atom-one-light">
-                    <!-- flowchart 箭头图标 勿删 -->
-                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
-                    </svg>
-                                            <blockquote>
-<p>转自：<a href="https://ask.dcloud.net.cn/explore/category-12" target="_blank" rel="nofollow noopener">DCloud社区 uni-app频道</a>的文章<a href="https://ask.dcloud.net.cn/article/36083" target="_blank" rel="nofollow noopener">Flutter、RN、uni-app比较</a></p>
-</blockquote>
+
+
 <h1><a name="t0"></a><a name="t0"></a><a id="_2"></a>前言</h1>
 <blockquote>
 <p>每当我们评估新技术时要问的第一个问题就是“它会给我们的业务和客户带来哪些价值？”，工程师们很容易对闪闪发光的新事物着迷，却经常会忽略这些新事物其实可能对我们的客户没有任何好处，反而只会让现有的工作流程更加复杂。</p>
@@ -206,8 +199,22 @@
     smaple text  
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>  
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>  
-
-<p>.greybox {<br>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>  background-color: #e0e0e0; /* grey 300 <em>/<br>  width: 320px;<br>  height: 240px;<br>  font: 18px<br>}<br>.redbox {<br>  background-color: #ef5350; /</em> red 400 */<br>  padding: 16px;<br>  color: #ffffff<br>}  </p>
+``` css
+.greybox {  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  background-color: #e0e0e0; /* grey 300 */  
+  width: 320px;  
+  height: 240px;  
+  font: 18px  
+}  
+.redbox {  
+  background-color: #ef5350; /* red 400 */  
+  padding: 16px;  
+  color: #ffffff  
+}  
+``` 
 <div class="hljs-button signin" data-title="登录后复制"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li></ul></pre>
 <pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.signin(event)" style="position: unset;"><span class="token keyword">var</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span> <span class="token comment">// grey box  </span>
   child<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Center</span><span class="token punctuation">(</span>  
@@ -437,7 +444,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/工作//" class="article-tag-list-link color4">-工作</a>
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
         		</li>
       		
 		</ul>
@@ -665,13 +672,14 @@ data: {
 
 <h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。</p>
 <h1 v-if="awesome">Vue is awesome!</h1>
-因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 template 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 template 元素。
+``` html
 <template v-if="ok">
   <h1>Title</h1>
   <p>Paragraph 1</p>
   <p>Paragraph 2</p></template>
-
-<p>你可以使用 v-else 指令来表示 v-if 的“else 块”：</p>
+``` 
+你可以使用 v-else 指令来表示 v-if 的“else 块”：
 <div v-if="Math.random() > 0.5">
   Now you see me</div><div v-else>
   Now you don't</div>
@@ -683,10 +691,10 @@ v-show 不支持 <template> 元素，也不支持 v-else。
 一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
 
 <h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。</p>
-<ul id="example-1">
-  <li v-for="item in items" :key="item.message">
-    
-  </li></ul>
+<pre><code class="html"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.message"</span>&gt;</span>
+    <span class="comment">{{ item.message }}</span>
+  <span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
 var example1 = new Vue({
   el: '#example-1',
   data: {
@@ -697,9 +705,7 @@ var example1 = new Vue({
   }
 })
 
-<div v-for="(value, name, index) in object"> . :  </div>
-
-
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(value, name, index) in object"</span>&gt;</span> <span class="comment">{{ index }}</span>. <span class="comment">{{ name }}</span>: <span class="comment">{{ value }}</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
 <h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
 <p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
 <h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>

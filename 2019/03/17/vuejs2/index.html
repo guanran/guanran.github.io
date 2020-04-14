@@ -16,7 +16,7 @@
 <meta property="og:description" content="指令现在你看到我了 这里，v-if 指令将根据表达式 seen 的值的真假来插入&#x2F;移除  元素。  参数…在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。 动态参数&lt;a v-bind:[attributeName]&#x3D;”url”&gt; … 这里的 attributeName 会被作为一个 JavaScript 表达式进行">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-03-17T09:01:54.000Z">
-<meta property="article:modified_time" content="2020-04-14T03:29:53.928Z">
+<meta property="article:modified_time" content="2020-04-14T03:45:36.365Z">
 <meta property="article:author" content="guanran">
 <meta property="article:tag" content="-技术分享">
 <meta name="twitter:card" content="summary">
@@ -246,13 +246,14 @@ data: {
 
 <h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。</p>
 <h1 v-if="awesome">Vue is awesome!</h1>
-因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 template 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 template 元素。
+``` html
 <template v-if="ok">
   <h1>Title</h1>
   <p>Paragraph 1</p>
   <p>Paragraph 2</p></template>
-
-<p>你可以使用 v-else 指令来表示 v-if 的“else 块”：</p>
+``` 
+你可以使用 v-else 指令来表示 v-if 的“else 块”：
 <div v-if="Math.random() > 0.5">
   Now you see me</div><div v-else>
   Now you don't</div>
@@ -264,10 +265,10 @@ v-show 不支持 <template> 元素，也不支持 v-else。
 一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
 
 <h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。</p>
-<ul id="example-1">
-  <li v-for="item in items" :key="item.message">
-    
-  </li></ul>
+<pre><code class="html"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.message"</span>&gt;</span>
+    <span class="comment">{{ item.message }}</span>
+  <span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
 var example1 = new Vue({
   el: '#example-1',
   data: {
@@ -278,9 +279,7 @@ var example1 = new Vue({
   }
 })
 
-<div v-for="(value, name, index) in object"> . :  </div>
-
-
+<span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(value, name, index) in object"</span>&gt;</span> <span class="comment">{{ index }}</span>. <span class="comment">{{ name }}</span>: <span class="comment">{{ value }}</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
 <h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
 <p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
 <h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>
