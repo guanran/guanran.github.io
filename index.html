@@ -152,6 +152,462 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-uniapp2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/15/uniapp2/">uniapp2</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/15/uniapp2/" class="archive-article-date">
+  	<time datetime="2019-07-15T08:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="entry-content typography-copy">
+
+<p>本教程为<a href="https://www.clearnull.com/18.html" target="_blank" rel="noopener">《用WordPress与uni-app开发,包含所有源代码》</a>系列教程之一。</p>
+
+
+
+<h2 id="xin0">引言</h2>
+
+
+
+<p>前面我们用uni-app搭建出了我们的app，但现在的app是什么内容都没有的，在这篇教程之中我将讲解怎么样制作首页幻灯片。</p>
+
+
+
+<p>先看一下简易设计图：</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><a href="https://img.inacorner.top/blog/2019/03/image-18.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-18.png" alt="" class="wp-image-320"></a></figure></div>
+
+
+
+<h2 id="xin1">开始</h2>
+
+
+
+<p><strong>1、修改配置文件</strong></p>
+
+
+
+<p>首先我们需要在前面创建的项目根目录下面的页面配置文件中（pages.json）将导航栏背景设置为黑色，并且将头部字体颜色设置为白色。</p>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-19.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_432" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-19.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_432" alt="" class="wp-image-321"></a></figure>
+
+
+
+<p>配置完成之后代码如下：</p>
+
+
+
+<pre class="wp-block-code wp-block-code__dark line-numbers  language-json" data-language="language-json" data-color-scheme="dark"><code class="  language-json"><span class="token punctuation">{</span>
+    <span class="token property">"pages"</span><span class="token operator">:</span> <span class="token punctuation">[</span> //pages数组中第一项表示应用启动页，参考：https<span class="token operator">:</span>//uniapp.dcloud.io/collocation/pages
+        <span class="token punctuation">{</span>
+            <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"pages/index/index"</span><span class="token punctuation">,</span>//首页文件路径
+            <span class="token property">"style"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"navigationBarTitleText"</span><span class="token operator">:</span> <span class="token string">"首页"</span>//首页头部标题
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"globalStyle"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"navigationBarTextStyle"</span><span class="token operator">:</span> <span class="token string">"white"</span><span class="token punctuation">,</span>//导航栏标题颜色（仅支持 black/white）
+        <span class="token property">"navigationBarTitleText"</span><span class="token operator">:</span> <span class="token string">"WPApp"</span><span class="token punctuation">,</span>//导航栏默认标题
+        <span class="token property">"navigationBarBackgroundColor"</span><span class="token operator">:</span> <span class="token string">"#000000;"</span><span class="token punctuation">,</span>//导航栏背景颜色，此处为黑色
+        <span class="token property">"backgroundColor"</span><span class="token operator">:</span> <span class="token string">"#F8F8F8"</span>//页面背景颜色
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>2、编写首页代码</strong></p>
+
+
+
+<p>需要在首页添加幻灯片，我们这里需要用到uni-app官方的组件，具体使用方法大家可以点击链接查看：<a href="https://uniapp.dcloud.io/component/swiper?id=swiper" target="_blank" rel="nofollow">swiper</a></p>
+
+
+
+<p>随后，依次打开目录pages&gt;index&gt;index.vue，而在index.vue中创建项目的时候已经有一部分代码了，这部分代码对于我们来说没什么用，所以我们先删除这些原有的代码，删除之后如下图：</p>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-20.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_562" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-20.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_562" alt="" class="wp-image-322"></a></figure>
+
+
+
+<p>删除完已有的代码之后，我们开始编写自己想要的代码，这里要在首页添加一个幻灯片功能，所以这里开始编写幻灯片代码。</p>
+
+
+
+<p>在uni-app中一个页面是有三部分组成的：模板代码（视图）、js代码（数据、交互）、css代码（视图样式），这里我们先编写模板代码如下：</p>
+
+
+
+<pre class="wp-block-code wp-block-code__dark  language-markup" data-language="language-markup" data-color-scheme="dark"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>uni-padding-wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>page-section swiper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>page-section-spacing<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                    <span class="token comment">&lt;!-- 一组幻灯片代码开始，用到组件swiper --&gt;</span>
+                    <span class="token comment">&lt;!-- indicator-dots autoplay interval……：组件相关属性，具体可以查看官网说明 --&gt;</span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>swiper<span class="token punctuation">"</span></span> <span class="token attr-name">indicator-dots</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>indicatorDots<span class="token punctuation">"</span></span> <span class="token attr-name">autoplay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>autoplay<span class="token punctuation">"</span></span> <span class="token attr-name">interval</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interval<span class="token punctuation">"</span></span> <span class="token attr-name">duration</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>duration<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                        <span class="token comment">&lt;!-- 每组幻灯片中的子项目 1 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                         <span class="token comment">&lt;!-- 每组幻灯片中的子项目 2 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                         <span class="token comment">&lt;!-- 每组幻灯片中的子项目 3 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span></code></pre>
+
+
+
+<p>其次是js代码，因为这里暂时还没有用到数据以及用户交互，所以这里就先不改变js代码，保留如下：</p>
+
+
+
+<p>最后是css代码，如下：</p>
+
+
+
+<pre class="wp-block-code wp-block-code__dark line-numbers  language-markup" data-language="language-markup" data-color-scheme="dark"><code class="  language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><strong>3、运行</strong></p>
+
+
+
+<p>运行到谷歌浏览器就可以看到如下效果：</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><a href="https://img.inacorner.top/blog/2019/03/image-21.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-21.png" alt="" class="wp-image-323"></a></figure></div>
+
+
+
+<p>最后附上整个页面的代码：</p>
+
+
+
+<pre class="wp-block-code wp-block-code__dark  language-markup" data-language="language-markup" data-color-scheme="dark"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>uni-padding-wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>page-section swiper<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>page-section-spacing<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                    <span class="token comment">&lt;!-- 一组幻灯片代码开始，用到组件swiper --&gt;</span>
+                    <span class="token comment">&lt;!-- indicator-dots autoplay interval……：组件相关属性，具体可以查看官网说明 --&gt;</span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>swiper<span class="token punctuation">"</span></span> <span class="token attr-name">indicator-dots</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>indicatorDots<span class="token punctuation">"</span></span> <span class="token attr-name">autoplay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>autoplay<span class="token punctuation">"</span></span> <span class="token attr-name">interval</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>interval<span class="token punctuation">"</span></span> <span class="token attr-name">duration</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>duration<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+                        <span class="token comment">&lt;!-- 每组幻灯片中的子项目 1 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                         <span class="token comment">&lt;!-- 每组幻灯片中的子项目 2 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                         <span class="token comment">&lt;!-- 每组幻灯片中的子项目 3 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                            <span class="token comment">&lt;!-- 此处放内容，可以是图片，也可是图片加文字 --&gt;</span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper-item</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>swiper</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
+    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style language-css">
+    <span class="token comment">/* 将这组幻灯片中的子项目改成我们设计图中的灰色 */</span>
+    <span class="token selector">swiper-item</span><span class="token punctuation">{</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> #f8f8f8<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+
+</div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/15/uniapp2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-uniapp1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/14/uniapp1/">使用uni-app框架创建一个app项目</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/14/uniapp1/" class="archive-article-date">
+  	<time datetime="2019-07-14T08:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="entry-content typography-copy">
+
+<h2 id="xin0">引言</h2>
+
+
+
+<p>一个app（小程序）的完成是需要两个端的，一个客户端，一个服务端，前面我们安装的WP以及开发一个简易的WP主题就是完成了服务端的准备工作，现在我们开始客户端的准备工作——使用uni-app框架创建一个app项目。</p>
+
+
+
+<p>需要说明的是客户端你可以使用vue、reactnative、ionic等其他框架，但为了大家都能看懂，并且少走一些弯路，此处我选用uni-app。</p>
+
+
+
+<h2 id="xin1">uni-app</h2>
+
+
+
+<p><code>uni-app</code>&nbsp;是一个使用&nbsp;<a rel="noreferrer noopener" href="https://vuejs.org/" target="_blank">Vue.js</a>&nbsp;开发<strong>跨平台</strong>应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。</p>
+
+
+
+<p>具体介绍查看uni-app官网：<a href="https://uniapp.dcloud.io/" target="_blank" rel="nofollow">https://uniapp.dcloud.io/</a></p>
+
+
+
+<h2 id="xin2">教程开始</h2>
+
+
+
+<p>1、下载官方IDE：<a href="http://www.dcloud.io/hbuilderx.html" target="_blank" rel="nofollow">http://www.dcloud.io/hbuilderx.html</a></p>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-12.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_451" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-12.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_451" alt="" class="wp-image-291"></a></figure>
+
+
+
+<p>2、IDE下载完成之后安装，打开并创建项目：</p>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-13.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-13.png" alt="" class="wp-image-292"></a></figure>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-14.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_673" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-14.png?x-oss-process=image/quality,q_80/resize,m_fill,w_1024,h_673" alt="" class="wp-image-293"></a></figure>
+
+
+
+<p>3、创建项目完成之后得到项目文件夹：</p>
+
+
+
+<figure class="wp-block-image"><a href="https://img.inacorner.top/blog/2019/03/image-15.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-15.png" alt="" class="wp-image-294"></a></figure>
+
+
+
+<p><strong>uni-app项目目录讲解</strong></p>
+
+
+
+<ol><li>components：组件目录</li><li>pages：页面目录，一个页面一个文件夹，创建成功之后下面应该有一个index文件夹，即为首页</li><li>static：资源文件目录，如图片</li><li>App.vue： 应用配置，用来配置App全局样式以及监听</li><li>main.js： Vue初始化入口文件</li><li>manifest.json：配置应用名称、appid、logo、版本等打包信息</li><li>pages.json：配置页面路由、导航条、选项卡等页面类信息</li><li>uni.scss：该文件中有详细介绍，这里就不说明了</li></ol>
+
+
+
+<p>4、在谷歌浏览器中运行uni-app项目：</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><a href="https://img.inacorner.top/blog/2019/03/image-16.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-16.png" alt="" class="wp-image-306"></a></figure></div>
+
+
+
+<p>运行之后，应该在谷歌浏览器中显示出如图效果：</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter"><a href="https://img.inacorner.top/blog/2019/03/image-17.png" target="_blank" rel="noopener" data-fancybox="images"><img src="https://img.inacorner.top/blog/2019/03/image-17.png" alt="" class="wp-image-307"></a></figure></div>
+
+
+</div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/14/uniapp1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-flutteroruni-app" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -159,13 +615,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/14/flutteroruni-app/">flutter、rn、uni-app比较</a>
+      <a class="article-title" href="/2019/05/14/flutteroruni-app/">flutter、rn、uni-app比较</a>
     </h1>
   
 
         
-        <a href="/2020/02/14/flutteroruni-app/" class="archive-article-date">
-  	<time datetime="2020-02-14T03:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
+        <a href="/2019/05/14/flutteroruni-app/" class="archive-article-date">
+  	<time datetime="2019-05-14T03:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
 </a>
         
       </header>
@@ -453,7 +909,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/14/flutteroruni-app/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/05/14/flutteroruni-app/">展开全文 >></a>
         </p>
       
 
