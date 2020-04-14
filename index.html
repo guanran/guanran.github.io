@@ -152,6 +152,330 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-flutteroruni-app" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/14/flutteroruni-app/">flutter、rn、uni-app比较</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/14/flutteroruni-app/" class="archive-article-date">
+  	<time datetime="2020-02-14T03:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div id="article_content" class="article_content clearfix">
+            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-688b67d66a.css">
+                            <div id="content_views" class="markdown_views prism-atom-one-light">
+                    <!-- flowchart 箭头图标 勿删 -->
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                                            <blockquote>
+<p>转自：<a href="https://ask.dcloud.net.cn/explore/category-12" target="_blank" rel="nofollow noopener">DCloud社区 uni-app频道</a>的文章<a href="https://ask.dcloud.net.cn/article/36083" target="_blank" rel="nofollow noopener">Flutter、RN、uni-app比较</a></p>
+</blockquote>
+<h1><a name="t0"></a><a name="t0"></a><a id="_2"></a>前言</h1>
+<blockquote>
+<p>每当我们评估新技术时要问的第一个问题就是“它会给我们的业务和客户带来哪些价值？”，工程师们很容易对闪闪发光的新事物着迷，却经常会忽略这些新事物其实可能对我们的客户没有任何好处，反而只会让现有的工作流程更加复杂。</p>
+</blockquote>
+<p>flutter最近比较热闹，毕竟是Google出品。</p>
+<p>但我们不是炒作热点的媒体，也不是忽悠你交学费的培训机构，我们作为实际的跨平台开发者，冷静的分析下这个东东。</p>
+<p>flutter是Google为Fuchsia操作系统设计的应用开发方式。</p>
+<p>Fuchsia OS要兼容廉价物联网设备，要求对硬件的消耗降低，并且为了避免与oracle的java打官司，Fuchsia 使用了dart语言+flutter界面库的方式。</p>
+<p>从设计上来看，这套方案的性能确实够高。dart虽然属于大前端范畴，但dart是和java一样的强类型语言，这让dart虚拟机可以做很多优化，性能方面超出了js。</p>
+<p>dart曾经与typescript竞争，谁才是更好的js？但不幸输给了typescript，chrome也放弃了内置dart虚拟机的计划。</p>
+<p>不过dart团队没有解散，几年后，他们借助flutter，再次出现在公众面前。</p>
+<h1><a name="t1"></a><a name="t1"></a><a id="_19"></a>性能分析和写法的对比</h1>
+<p>flutter作为界面库（注意它只是界面库，dart语言是另一个项目），它唯一要干的事情就是渲染界面。不像HTML5，flutter界面库连视频、定位等都没有，就是一个纯排版引擎，绘制文字、按钮、图片等常用界面控件。</p>
+<p>这个排版引擎的特点是简单、高性能。</p>
+<p>在3大主流渲染引擎里，webview、react native/weex、flutter，复杂度依次降低，渲染性能依次上升。（uni-app是双渲染引擎，webview和weex都内置了，随便开发者使用切换）</p>
+<p>所以我们要清楚，提升性能是有代价的，你究竟想要灵活丰富的css3，还是想要固定flex模式排版，抑或是最简单但高性能的flutter排版？开发便利性和运行性能不可兼得。</p>
+<p>同时我们要明白，性能的差别，并不是因为Google的chrome团队、Android团队的技术比同公司的flutter团队差。而是flutter提供的布局写法是被限制过的，解析快，所以渲染快。别忘了webview的排版引擎也是世界级工程师用c写的。</p>
+<p>但通过这种方式提升性能的代价，就是布局复杂的界面时，flutter的代码嵌套的让人崩溃。</p>
+<p>我们先举个例子，同样的界面，用HTML和flutter如何实现：</p>
+<pre class="prettyprint"><code class="prism language-html has-numbering" onclick="mdcp.signin(event)" style="position: unset;"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>greybox<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>redbox</span><span class="token punctuation">&gt;</span></span>  
+    smaple text  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>  
+
+<p>.greybox {<br>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>  background-color: #e0e0e0; /* grey 300 <em>/<br>  width: 320px;<br>  height: 240px;<br>  font: 18px<br>}<br>.redbox {<br>  background-color: #ef5350; /</em> red 400 */<br>  padding: 16px;<br>  color: #ffffff<br>}  </p>
+<div class="hljs-button signin" data-title="登录后复制"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li></ul></pre>
+<pre class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.signin(event)" style="position: unset;"><span class="token keyword">var</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span> <span class="token comment">// grey box  </span>
+  child<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Center</span><span class="token punctuation">(</span>  
+    child<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span> <span class="token comment">// red box  </span>
+      child<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span>  
+        <span class="token string">"smaple text"</span><span class="token punctuation">,</span>  
+        style<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">TextStyle</span><span class="token punctuation">(</span>  
+          color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>white<span class="token punctuation">,</span>  
+          fontSize<span class="token punctuation">:</span> <span class="token number">18.0</span><span class="token punctuation">,</span>  
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>  
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>  
+      decoration<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">BoxDecoration</span><span class="token punctuation">(</span>  
+        color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>red<span class="token punctuation">[</span><span class="token number">400</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  
+      <span class="token punctuation">)</span><span class="token punctuation">,</span>  
+      padding<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">EdgeInsets<span class="token punctuation">.</span>all</span><span class="token punctuation">(</span><span class="token number">16.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>  
+  <span class="token punctuation">)</span><span class="token punctuation">,</span>  
+  width<span class="token punctuation">:</span> <span class="token number">320.0</span><span class="token punctuation">,</span>  
+  height<span class="token punctuation">:</span> <span class="token number">240.0</span><span class="token punctuation">,</span>  
+  color<span class="token punctuation">:</span> Colors<span class="token punctuation">.</span>grey<span class="token punctuation">[</span><span class="token number">300</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  
+<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<div class="hljs-button signin" data-title="登录后复制"></div></code><ul class="pre-numbering" style=""><li style="color: rgb(153, 153, 153);">1</li><li style="color: rgb(153, 153, 153);">2</li><li style="color: rgb(153, 153, 153);">3</li><li style="color: rgb(153, 153, 153);">4</li><li style="color: rgb(153, 153, 153);">5</li><li style="color: rgb(153, 153, 153);">6</li><li style="color: rgb(153, 153, 153);">7</li><li style="color: rgb(153, 153, 153);">8</li><li style="color: rgb(153, 153, 153);">9</li><li style="color: rgb(153, 153, 153);">10</li><li style="color: rgb(153, 153, 153);">11</li><li style="color: rgb(153, 153, 153);">12</li><li style="color: rgb(153, 153, 153);">13</li><li style="color: rgb(153, 153, 153);">14</li><li style="color: rgb(153, 153, 153);">15</li><li style="color: rgb(153, 153, 153);">16</li><li style="color: rgb(153, 153, 153);">17</li><li style="color: rgb(153, 153, 153);">18</li><li style="color: rgb(153, 153, 153);">19</li><li style="color: rgb(153, 153, 153);">20</li></ul></pre>
+<p>可以看出，从代码的写法来说，flutter没有tag和样式的说法，更没有选择器，从头到尾只有dart语言，它的界面控件是用dart代码new出来的，每个控件的样式，是在new的时候设置的json参数。</p>
+<p>如果我们要嵌套布局，就要不停的在dart里写child，同时在dart里给child们设样式参数。上面的代码，只是嵌套了1层，实际开发中，dom要嵌套好多层，想象那样的代码。。。所以大家都诟病dart是“嵌套地狱”。</p>
+<p>或者，你可以这么理解，这是一个只有js，没有html和css的浏览器。你需要用js createElement来创建元素，用js的style方法给每个element设style，反正就是不能写html和css代码。前端都已经发展到各种mvc等视图逻辑分离的架构了，也有了vue组件这种组件化模式方便用各种轮子快速完成界面。你是否能适应dart这种低效的界面开发模式？从开发模式来讲，这确实是一种倒退。</p>
+<p>浏览器的html提供了tag和样式分离的写法，还有各种各样的选择器，但其实这也是有代价的。它导致webview初始化时要同时先启动webkit排版引擎来解析这些编写随性的html、css，同时还要启动一个js引擎比如v8或jscore来解析里面的js。</p>
+<p>而dart就很简单，只启动一个dart引擎，解析严格的dart语法，它不会去操心有些标签未闭合要如何容错，不会判断宽度320后面是px还是rem或者是动态计算百分比。</p>
+<p>对比这2个引擎初始化时要干的事，差别简直太大了。</p>
+<p>所以从解析效率上，flutter肯定比webview要高。但从编码灵活性上，flutter写的代码，嗯，难看而低效！</p>
+<p>flutter使用的也是flex布局思想，这是一个强嵌套布局模型，比web常规排版引擎的嵌套更多。当界面复杂时，flutter的代码要嵌套几十层，每层的元素的json样式都和元素一起混写在dart代码里，让人崩溃。</p>
+<p>有人提出是否可以通过一种预编译的dsl来简化写法，让flutter的开发不这么痛苦。</p>
+<p>但这个难度太大了，从严格转换为松散是简单的，从松散转换为严格几乎是不可能的。</p>
+<p>什么意思呢？比如flutter代码转换web代码，是很简单的，flutter已经自带了这个功能。但是想反过来，那可难了。</p>
+<p>类似的还有，把typescript转为js是容易的，反之，不是绝对不可行，但会复杂到你宁愿去重写一套typescript代码。</p>
+<p>flutter的性能高，除了简单严格，还有一个特点，就是逻辑层与视图层统一，运行在同一套dart虚拟机下。</p>
+<p>我们知道rn和weex，也是原生渲染的，它们的性能高于webview。但同为原生渲染的，怎么会慢于flutter呢？其实不是原生渲染慢，而是js和原生通信慢。</p>
+<p>rn和weex都采用了独立的js引擎（iOS是jscore，Android是v8，最新版rn开始在Android上搞自己的js引擎），从js与dart的比较上，性能稍逊一筹。但这不是主要问题，主要问题是，rn、weex的js引擎和原生渲染层是两个运行环境。</p>
+<p>当js引擎联网获取到数据后，通知原生视图层更新界面时，有一个跨环境的通信折损。同样，当用户在屏幕上操作原生视图层时，要给js引擎发送通知，也会产生这个通信折损。</p>
+<p>不过这种性能差别，在大多数场景中，用户是感受不到的。比较影响的场景，是跟手式的js响应操作绘制帧动画。</p>
+<p>这方面，weex有个值得称赞的技术是BindingX，它可以预定义规则，让用户界面在原生层交互时通过预定义规则直接响应，而无需传递给js层。在需要短时间内来回通信的场景时，可以使用BindingX这类解决方案。它的性能和灵活性比rn更强了一些。</p>
+<p>说回来flutter，它只有一个dart引擎，没有来回通信产生的性能问题。不过任何事情都是有利有弊的，flutter在普通的界面绘制上效率虽然高，但一旦涉及原生的界面，反而会遇到更多问题。</p>
+<p>前面已经说过，flutter只是一个基础排版引擎，缺少很多能力，当我们需要在flutter界面上内嵌一个原生的视频播放扩展控件时（flutter没有视频播放能力），或者原生的高德地图sdk，那么在拖动视频进度时、拖动地图时，flutter一样会产生原生和dart之间的通信，造成性能损耗。</p>
+<p>事实上，由于flutter是在一个类canvas环境绘制的，想把一个原生控件嵌入flutter的布局里某些元素之间去排版，还不是一件容易做到的事情，坑很多。</p>
+<p>每个人都想要一个像css3那样灵活写法的布局引擎，他们给react native和weex提需求，给flutter提需求。殊不知，让这些产品团队实现了css3时，他们的性能优势已经不再了，他们相当于又实现了一遍webview。这种无意义的需求，他们是不会受理了。</p>
+<p>性能好，有个度，客观地讲，rn/weex调用原生渲染的性能，和flutter的渲染性能，在用户体验上并没有明显区别，甚至在很多场景下，和webview渲染的小程序也没有明显区别。</p>
+<p>也简单说说webview渲染小程序，为什么性能高，核心是预载。点击一个新页面时，webview是提前创建好的，不会走复杂的webkit、v8的初始化流程，连开发者的js代码，也是预载好的。所以点击新页面时，它的渲染速度和原生应用没什么差别。当然也有个坏处，就是启动慢。微信里启动小程序速度看着还行，其实是微信在启动小程序之前，就已经提前初始化了小程序运行环境。</p>
+<h1><a name="t2"></a><a name="t2"></a><a id="ui_125"></a>即便是排版引擎，ui库好用吗？</h1>
+<p>不管是rn还是flutter，有一个设计，很不中国化。它们在iOS和Android平台上，使用2套ui库。</p>
+<p>比如flutter，在iOS上写一个button，要用CupertinoButton，是iOS风格的控件，在Android上则要用RaisedButton，是Material风格的控件。</p>
+<p>rn也是如此，它的官方说法是：learn once，write anywhere。它都不敢说：write once，run anywhere。因为它确实要求开发者写2套代码。</p>
+<p>中国的开发者可没有这种习惯，中国的每个开发者，为了避免用户换手机后不会用自己的app，都会使用中性的设计。</p>
+<p>就连微信Android版，底部的tab也是仿iOS而不是Material风格（Material风格是把底tab放在顶部的，并且左右滑动，微信曾经有这样一个临时版本，因为被用户吐槽，很快就下掉了）。</p>
+<p>这种中外差异怎么造成的？</p>
+<p>国外Android手机，其手机主界面就是强烈的Material风格。用户在Android主界面习惯的风格和使用方式，如果启动一个App后不是这样，会导致用户不会用了。</p>
+<p>Google也一再给Android开发者强调，App必须使用Material风格。这其实也是一个防止用户切换脱离Android的策略设计。</p>
+<p>所以国外开发者的App，Android上都会遵循Material风格，当然，这种Material风格的App是上不了Apple的Appstore的。</p>
+<p>这就导致他们默认就是要写2套ui的，所以rn和flutter都是iOS、Android各自1套ui控件。</p>
+<p>但在中国，我们的国产Android Rom，根本不是Material风格，很多rom以仿iOS体验为卖点。</p>
+<p>所以中国的App，全都是贴近iOS的中性风格，中国的用户换了手机，不管是手机os本身，还是App的使用，都不会造成切换障碍。</p>
+<p>rn和flutter这种“跨平台”排版引擎，其跨平台性，对于中国开发者而言，又打了折扣。</p>
+<p>其实类似小程序那样的ui风格，是能够良好的跨iOS和Android的体验的，不管用什么手机，打开小程序都不会觉得有问题。</p>
+<p>uni-app默认也是这种通用ui风格。uni-app的开发者只需要写一套界面ui，就可以适应不同手机的用户，真正的 write once，run anywhere。</p>
+<h1><a name="t3"></a><a name="t3"></a><a id="_156"></a>动态性</h1>
+<p>webview、rn/weex，都有一个特点，可以远程动态载入js代码，可以更新本地的js代码。前端开发者认为动态性是天经地义的，但其实flutter并不支持。</p>
+<p>flutter是有编译优化概念的，如果它提供动态性支持，会影响它的性能。</p>
+<p>业内有些开发者，改造了flutter，用一个独立的v8/jscore来加载动态js代码，去操作flutter布局引擎的渲染。好像还有些人在追捧这样的方案，简直是闲得蛋疼。</p>
+<p>flutter本来没有跨环境通信的问题，结果又弄了一个js引擎进来搞出了通信问题，造成性能下降，还把包体积增加了很大，还不如直接用rn/weex。</p>
+<p>除了flutter，rn/weex/uni-app都可以动态热更新。</p>
+<h1><a name="t4"></a><a name="t4"></a><a id="_167"></a>跨平台排版引擎和跨平台应用开发引擎的区别</h1>
+<p>有些人说他们的App用rn/weex、flutter。但是具体用它们做了什么呢？</p>
+<p>是整个App用了它们，还是某个页面用了它们？</p>
+<p>一个页面跨平台，和一个应用跨平台，是完全不同的2个概念。</p>
+<p>webview、rn/weex、flutter全部是渲染引擎，webview因为HTML5的发展，还算是多了一些能力比如位置服务、多媒体等。而rn/weex、flutter真的只是一个纯粹的排版引擎，没有任何原生能力。</p>
+<p>如果一个原生应用里，某个不涉及原生能力的界面想跨平台，那么这几个引擎都可以，并且flutter的性能最高。所以能看到一些公司尝试把App中的个别原生交互较少页面使用flutter实现。</p>
+<p>但如果一个完整的应用，想用跨平台工具开发，那就不是排版引擎的范畴了，它需要应用开发引擎。</p>
+<p>什么是跨平台应用开发引擎？不但排版部分要跨平台，开发API也要跨平台。</p>
+<p>应用开发离不开os或三方sdk的能力调用，如果是单纯的排版引擎，一旦涉及os能力和sdk调用，就必须iOS、Android的工程师配合，编写不同的原生代码整合在一起。这就不跨平台了。</p>
+<p>Airbnb曾是React Native 框架的倡导者和开发者代表。但他们于2019年正式发公告，弃用了react native。</p>
+<p>原因是什么？</p>
+<p>很简单，react native并不能提升Airbnb的开发效率，反而降低了他们的效率。</p>
+<p>“本来我们可以只维护Android和iOS两套代码，但现在我们要维护三套（指多了一套react native的js代码），这让我们很疲惫” – aribnb</p>
+<p>开发者选用跨平台开发引擎，本来是为了提高效率、降低成本。Airbnb正是在实践了几年后，发现rn根本无法实现他选用跨平台引擎的初衷时，无奈放弃了rn，用原生开发重写。</p>
+<p>要想真的提升开发效率，降低开发成本，那么跨平台开发引擎，需要提供一个完整的应用开发平台，包含所有常用的应用开发能力的跨平台。在不常用的部分，提供插件市场以及免原生介入的插件使用方式。</p>
+<p>在react native、flutter的社区，也有不少三方提供的原生插件，但是连Airbnb这样的国外开发者对此都不满意。更何况对于很多中国开发者常用的场景，其对应的插件的质量、跨端性都难以商用。</p>
+<p>更麻烦的是如果你不会原生开发，就没法把这些插件与你的前端代码集成起来。</p>
+<p>uni-app，它的设计目标不是跨平台排版引擎，而是跨平台应用开发引擎。</p>
+<p>所以uni-app的排版部分，可以选择小程序强化webview引擎和weex引擎，可根据自己的需求切换。而能力层面，uni-app提供了htmlplus API、Native.js、插件市场，解决了原生能力js化的问题。</p>
+<p>uni-app让开发者真的不用懂原生开发就能做出完整的跨平台应用。遇到极个别的需求，开发者也可以去插件市场找人订做一个原生插件，自己仍然使用js来集成，仍然可以云端直接打包。</p>
+<h1><a name="t5"></a><a name="t5"></a><a id="_206"></a>技术学习成本和难度</h1>
+<p>rn，要求开发者学习react，要求精通flex布局，要求原生开发协作。</p>
+<p>flutter，要求开发者学习dart，了解dart和flutter的API、要求精通flex布局，要求原生开发协作。</p>
+<p>weex已经内嵌到uni-app中，就不单独提了。</p>
+<p>uni-app，要求开发者学习vue，了解小程序。</p>
+<p>很明显uni-app的学习成本太低了，它没有附加专有技术，全部使用公共技术。</p>
+<p>学习成本和难度，直接意味着：开发成本、招聘成本、上线速度、上线风险。</p>
+<p>另外，dart究竟值不值得学，是一个大问题。</p>
+<p>Google的天才工程师也发明了go语言，它确实有很多理论优势，但实际上市场的主流，仍然是c和c++。</p>
+<h1><a name="t6"></a><a name="t6"></a><a id="_223"></a>生态</h1>
+<p>任何开发引擎，都离不开生态。</p>
+<p>对于国外的开发者，rn、flutter的生态肯定比uni-app好，比如facebook登陆分享、Google地图等。</p>
+<p>但对于国内的开发者，那是反过来的，中国开发者需要的全端推送（UniPush集成了iOS、华为、小米、OPPO等众多原厂推送）、各种国内登陆、支付、分享SDK、各种国内地图、各种ui库、以及Echart图表等，都是在uni-app体系里，这方面生态可比rn、flutter丰富多了。</p>
+<h1><a name="t7"></a><a name="t7"></a><a id="_230"></a>其他端的跨端性</h1>
+<p>flutter和rn，都是支持web技术的。但都是仅限于普通界面排版，涉及定位、摄像头、相册什么的，是要单独写代码的。</p>
+<p>另外flutter的H5版，嗯，作为中国开发者，你不会想要一个如此浓郁的Material风格的H5版的。。。</p>
+<p>更何况这个Material ui库大的很，编译出来的H5版要十几M的体积。</p>
+<p>uni-app的H5端是包含完善的能力引擎的，丰富能力都可以直接跨端使用，风格也是跨端风格。uni-app的H5引擎体积只有1百K，gzip后只剩下30k（不含vue、vue rooter），比其他工具的引擎体积要小的多。</p>
+<p>另外，中国离不开小程序，rn、flutter官方都不会支持小程序，由于架构差异太大，国内三方也做不到把rn代码良好的编译为小程序代码。uni-app则可以一套代码，同时编译为iOS、Android、H5、微信小程序、支付宝小程序、百度小程序、头条小程序、QQ小程序。</p>
+<h1><a name="t8"></a><a name="t8"></a><a id="_241"></a>结论</h1>
+<p>每种技术的诞生，有其背后公司的目的。</p>
+<p>但凡没有明确公司战略的技术，除非是特别简单的技术，否则很难商用，因为为了商用要投入公司非常多资源。</p>
+<p>flutter诞生的目的，是为了Fuchsia OS，是为了在下一个互联网大潮，即万物互联的物联网年代，提供一个类似Android在移动互联网位置的垄断性操作系统。</p>
+<p>因为Google已经很明确不会在下一个时代使用Android+java的路线了。</p>
+<p>至于在Android上去java化，那是Kotlin的使命，与flutter无关。</p>
+<p>跨iOS和Android平台开发，这不是Google的战略目标。</p>
+<p>但万物互联何时到来？Fuchsia OS何时流行？这在现实中是一个问号，在Google内部，也只是战略储备项目。</p>
+<p>一个语言的流行，不是一件简单的事情，不是有优点，就会流行，它需要天时地利人和。</p>
+<p>6年前我们就知道dart比js更好，dart不应该消亡，但想成为主流技术，太难太难了。</p>
+<p>同样我们也知道go比c++更好，但go还是起不来。</p>
+<p>想靠flutter驱动dart流行是不现实的，甚至是反过来的。跨iOS、Android开发在国外不是主流市场，这点价值造就不出一个这么难建的生态。</p>
+<p>所以dart能否流行，是要打一个大大的问号的，它可能会像go语言一样，叫好不叫座。</p>
+<p>写了这么多，最后总结下flutter与uni-app的比较：</p>
+<ul>
+<li>flutter的相对优势：
+<ul>
+<li>性能好一丢丢。比rn有优势，但比拥有bindingx的weex/uni-app，在实际开发中没有很明显的差距。</li>
+</ul>
+</li>
+<li>flutter的相对劣势：
+<ul>
+<li>需要原生协作，维护3套代码，无法有效降低开发成本，提升开发效率</li>
+<li>嵌套地狱，代码难看难维护</li>
+<li>不支持热更新</li>
+<li>目前质量和成熟度很低，github上的issue有5k+，很容易掉坑里</li>
+<li>原生可视控件融合不好，比如webview、video、map</li>
+<li>ui库不适合国情</li>
+<li>学习成本高</li>
+<li>dart未来扑朔迷离</li>
+</ul>
+</li>
+</ul>
+<p>再总结下rn和uni-app的比较</p>
+<ul>
+<li>rn的相对优势：
+<ul>
+<li>rn的坑虽然比weex的少，但uni-app已经填了weex的很多坑。这方面差别不大。</li>
+<li>rn的生态虽然比weex丰富。但uni-app是反过来的，uni-app的国内应用生态丰富度超过了rn。</li>
+<li>rn的app冷启动比uni-app快。这个问题uni-app已经内部改进完毕，下个版本发布就能解决。</li>
+<li>rn是纯单页的，嵌入原生App比较灵活。而uni-app是应用整体的概念，如果要内嵌入其他原生应用的话，要求原生应用内嵌uni-app应用整体进来</li>
+</ul>
+</li>
+<li>rn的相对劣势：
+<ul>
+<li>需要原生协作，维护3套代码，无法有效降低开发成本，提升开发效率</li>
+<li>不支持小程序，发布到h5也无法直接发</li>
+<li>ui库不适合国情，learn once，write anywhere</li>
+<li>学习成本高，用人成本高，不利于开发商降低开发成本</li>
+<li>rn是纯单页应用，如果一个应用的页面很多，用rn写会很崩溃，变量污染和干扰严重。而weex/uni-app支持多页面，页面之间上下文隔离，写页面较多的大型应用更合适</li>
+<li>另外react在中国的市场占有率远不如vue。这也是中国与国外不同的特色情况。</li>
+</ul>
+</li>
+</ul>
+<p>贴个vue、react、react native的百度指数对比，无论总体量的差距，还是发展趋势的下滑程度，可以明显看出react系在中国确实不行了。<br>
+<img src="https://img-blog.csdnimg.cn/20190828162412805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FhYWFhYWxpYW5n,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+中国的开发者，过去总会想：</p>
+<ol>
+<li>小程序那套webview优化的技术，我能不能用到我的App里？现在uni-app已经为你解决了这个问题。</li>
+<li>weex能不能坑少点，API和插件多点？现在uni-app已经为你解决了这个问题。</li>
+<li></li>
+</ol>
+<p>如果你是一个资源充沛的大公司，原生App中部分不要求动态性、也没有太多原生交互的页面，可以尝试使用flutter实现。但如果大范围使用，你也会遇到和aribnb一样的问题，维护3套代码还不如维护2套代码。</p>
+<p>如果你开发uni-app选用了weex原生渲染，那App的性能足够好，且你得到了切实的开发效率的提升、成本的下降、快速和低风险的上线。</p>
+<p>选择跨平台工具而不是原生开发，本质目的不就是为了成本和效率吗？能真正解决你本质需求的，就是uni-app。</p>
+
+<pre><code>                    &lt;/div&gt;&lt;div data-report-view=&quot;{&amp;quot;mod&amp;quot;:&amp;quot;1585297308_001&amp;quot;,&amp;quot;dest&amp;quot;:&amp;quot;https://blog.csdn.net/aaaaaaliang/article/details/100121493&amp;quot;,&amp;quot;extend1&amp;quot;:&amp;quot;pc&amp;quot;}&quot;&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;link href=&quot;https://csdnimg.cn/release/phoenix/mdeditor/markdown_views-60ecaf1f42.css&quot; rel=&quot;stylesheet&quot;&gt;
+                                &lt;div class=&quot;more-toolbox&quot;&gt;
+&lt;div class=&quot;left-toolbox&quot;&gt;
+    &lt;ul class=&quot;toolbox-list&quot;&gt;
+
+        &lt;li class=&quot;tool-item tool-active is-like &quot;&gt;&lt;a href=&quot;javascript:;&quot;&gt;&lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#csdnc-thumbsup&quot;&gt;&lt;/use&gt;
+        &lt;/svg&gt;&lt;span class=&quot;name&quot;&gt;点赞&lt;/span&gt;
+        &lt;span class=&quot;count&quot;&gt;10&lt;/span&gt;
+        &lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;tool-item tool-active is-collection &quot;&gt;&lt;a href=&quot;javascript:;&quot; data-report-click=&quot;{&amp;quot;mod&amp;quot;:&amp;quot;popu_824&amp;quot;}&quot;&gt;&lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#icon-csdnc-Collection-G&quot;&gt;&lt;/use&gt;
+        &lt;/svg&gt;&lt;span class=&quot;name&quot;&gt;收藏&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;tool-item tool-active is-share&quot;&gt;&lt;a href=&quot;javascript:;&quot; data-report-click=&quot;{&amp;quot;mod&amp;quot;:&amp;quot;1582594662_002&amp;quot;}&quot;&gt;&lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#icon-csdnc-fenxiang&quot;&gt;&lt;/use&gt;
+        &lt;/svg&gt;分享&lt;/a&gt;&lt;/li&gt;
+        &lt;!--打赏开始--&gt;
+                                &lt;!--打赏结束--&gt;
+                                &lt;li class=&quot;tool-item tool-more&quot;&gt;
+            &lt;a&gt;
+            &lt;svg t=&quot;1575545411852&quot; class=&quot;icon&quot; viewBox=&quot;0 0 1024 1024&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; p-id=&quot;5717&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;&lt;defs&gt;&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;&lt;/defs&gt;&lt;path d=&quot;M179.176 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z&quot; p-id=&quot;5718&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M509.684 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z&quot; p-id=&quot;5719&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M846.175 499.222m-113.245 0a113.245 113.245 0 1 0 226.49 0 113.245 113.245 0 1 0-226.49 0Z&quot; p-id=&quot;5720&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            &lt;ul class=&quot;more-box&quot;&gt;
+                &lt;li class=&quot;item&quot;&gt;&lt;a class=&quot;article-report&quot;&gt;文章举报&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+                            &lt;/ul&gt;
+&lt;/div&gt;
+            &lt;/div&gt;
+
+    &lt;/div&gt;</code></pre><h1 id="From-DCloud-heavensoft"><a href="#From-DCloud-heavensoft" class="headerlink" title="From DCloud_heavensoft"></a>From <a href="https://ask.dcloud.net.cn/article/36083" target="_blank" rel="noopener">DCloud_heavensoft</a></h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-技术分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工作//" class="article-tag-list-link color4">-工作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/14/flutteroruni-app/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-myjl" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -376,7 +700,7 @@ var example1 = new Vue({
 <div v-for="(value, name, index) in object"> . :  </div>
 
 
-<h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
+<h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
 <p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
 <h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>
 
