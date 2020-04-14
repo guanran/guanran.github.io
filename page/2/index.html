@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://guanran.github.io">
-  <title>vue.js笔记2 | Hello World</title>
+  <title>Hello World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="指令现在你看到我了 这里，v-if 指令将根据表达式 seen 的值的真假来插入&#x2F;移除  元素。  参数…在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。 动态参数&lt;a v-bind:[attributeName]&#x3D;”url”&gt; … 这里的 attributeName 会被作为一个 JavaScript 表达式进行">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue.js笔记2">
-<meta property="og:url" content="https://guanran.github.io/2019/03/17/vuejs2/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="https://guanran.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hello World">
-<meta property="og:description" content="指令现在你看到我了 这里，v-if 指令将根据表达式 seen 的值的真假来插入&#x2F;移除  元素。  参数…在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。 动态参数&lt;a v-bind:[attributeName]&#x3D;”url”&gt; … 这里的 attributeName 会被作为一个 JavaScript 表达式进行">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-03-17T09:01:54.000Z">
-<meta property="article:modified_time" content="2020-04-14T09:13:03.389Z">
 <meta property="article:author" content="guanran">
-<meta property="article:tag" content="-技术分享">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hello World" type="application/atom+xml">
@@ -155,162 +150,403 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vuejs2" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-heike" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      vue.js笔记2
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/heike/">heike</a>
     </h1>
   
 
         
-        <a href="/2019/03/17/vuejs2/" class="archive-article-date">
-  	<time datetime="2019-03-17T09:01:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-17</time>
+        <a href="/2017/04/09/heike/" class="archive-article-date">
+  	<time datetime="2017-04-09T13:17:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p v-if="seen">现在你看到我了</p>
-这里，v-if 指令将根据表达式 seen 的值的真假来插入/移除 <p> 元素。
-
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p><a v-bind:href="url">…</a><br>在这里 href 是参数，告知 v-bind 指令将该元素的 href attribute 与表达式 url 的值绑定。</p>
-<h2 id="动态参数"><a href="#动态参数" class="headerlink" title="动态参数"></a>动态参数</h2><p>&lt;a v-bind:[attributeName]=”url”&gt; … </a><br>这里的 attributeName 会被作为一个 JavaScript 表达式进行动态求值，求得的值将会作为最终的参数来使用。例如，如果你的 Vue 实例有一个 data 属性 attributeName，其值为 “href”，那么这个绑定将等价于 v-bind:href。</p>
-<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p>修饰符 (modifier) 是以半角句号 . 指明的特殊后缀，用于指出一个指令应该以特殊方式绑定。例如，.prevent 修饰符告诉 v-on 指令对于触发的事件调用 event.preventDefault()：</p>
-<form v-on:submit.prevent="onSubmit">...</form>
-
-<p>@click.stop=”dosomething”<br>应用：阻止冒泡</p>
-<p>v-bind:href 缩写 :href  响应式地更新  HTML attribute</p>
-<p>v-on:click缩写 @click   于监听 DOM 事件</p>
-<h1 id="计算属性-computed"><a href="#计算属性-computed" class="headerlink" title="计算属性 computed"></a>计算属性 computed</h1><p>计算属性是基于它们的响应式依赖进行缓存的 有缓存的 需要多次调用的<br>计算属性默认只有 getter，不过在需要时你也可以提供一个 setter</p>
-<div id="example">
-  <p>Original message: ""</p>
-  <p>Computed reversed message: ""</p></div>
-var vm = new Vue({
-  el: '#example',
-  data: {
-    message: 'Hello'
-  },
-  computed: {
-    // 计算属性的 getter
-    reversedMessage: function () {
-      // `this` 指向 vm 实例
-      return this.message.split('').reverse().join('')
-    }
-  }
-})
-
-<h1 id="侦听属性watch"><a href="#侦听属性watch" class="headerlink" title="侦听属性watch"></a>侦听属性watch</h1><p>当你有一些数据需要随着其它数据变动而变动时<br>当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。</p>
-<h1 id="绑定-HTML-Class"><a href="#绑定-HTML-Class" class="headerlink" title="绑定 HTML Class"></a>绑定 HTML Class</h1><div
-  class="static"
-  v-bind:class="{ active: isActive, 'text-danger': hasError }"
-></div>
-和如下 data：
-data: {
-  isActive: true,
-  hasError: false
-}
-结果渲染为：
-<div class="static active"></div>
-
-<p>绑定的数据对象不必内联定义在模板里：</p>
-<div v-bind:class="classObject"></div>
-data: {
-  classObject: {
-    active: true,
-    'text-danger': false
-  }
-}
-如果你也想根据条件切换列表中的 class，可以用三元表达式：
-<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
-
-
-<p>v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名：</p>
-<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
-data: {
-  activeColor: 'red',
-  fontSize: 30
-}
-
-<div v-bind:style="styleObject"></div>
-data: {
-  styleObject: {
-    color: 'red',
-    fontSize: '13px'
-  }
-}
-
-<h2 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h2><p>v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。</p>
-<h1 v-if="awesome">Vue is awesome!</h1>
-因为 v-if 是一个指令，所以必须将它添加到一个元素上。但是如果想切换多个元素呢？此时可以把一个 template 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 template 元素。
-
-<pre><code class="html"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-if</span>=<span class="string">"ok"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Paragraph 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">template</span>&gt;</span></code></pre>
-<p>你可以使用 v-else 指令来表示 v-if 的“else 块”：</p>
-<div v-if="Math.random() > 0.5">
-  Now you see me</div><div v-else>
-  Now you don't</div>
-
-<p>这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 key 属性即可</p>
-<h1 v-show="ok">Hello!</h1>
-不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS 属性 display。
-v-show 不支持 template 元素，也不支持 v-else。
-一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。
-
-<h2 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h2><p>我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名。</p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.message"</span>&gt;</span>
-    <span class="comment">{{ item.message }}</span>
-  <span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span>
-var example1 = new Vue({
-  el: '#example-1',
-  data: {
-    items: [
-      { message: 'Foo' },
-      { message: 'Bar' }
-    ]
-  }
-})
-
-<span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(value, name, index) in object"</span>&gt;</span> <span class="comment">{{ index }}</span>. <span class="comment">{{ name }}</span>: <span class="comment">{{ value }}</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
-<h1 id="变异方法-mutation-method"><a href="#变异方法-mutation-method" class="headerlink" title="变异方法 (mutation method)"></a>变异方法 (mutation method)</h1><p>改变调用了这些方法的原始数组<br>push()<br>pop()<br>shift()<br>unshift()<br>splice()<br>sort()<br>reverse()<br>example1.items.push({ message: ‘Baz’ })。</p>
-<p>不会改变原始数组，而总是返回一个新数组<br> filter()、concat() 和 slice()<br>example1.items = example1.items.filter(function (item) { return item.message.match(/Foo/) })</p>
-<h1 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h1><p>v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码</p>
-
+        <div id="container" class="wrap">
+<div id="portal" class="section mtop">
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.2cto.com/" rel="noopener" target="_blank">红黑联盟</a>十三年IT技术门户 精英梦想由此起航 (网络安全、黑客防御、信息安全)</li>
+<li><a href="http://www.hackbase.com/" rel="noopener" target="_blank">黑基网</a>原孤独剑客所创立的黑客基地，国内知名黑客门户。</li>
+<li><a href="http://www.hack50.com/" rel="noopener" target="_blank">黑客武林</a>拥有稳定的网络访问群体和最专业的技术合作团队!</li>
+<li><a href="http://www.hxhack.com/" rel="noopener" target="_blank">华夏联盟</a>华夏联盟已经全面改版转型向网络安全方面发展。</li>
+<li><a href="http://www.hackdos.com/" rel="noopener" target="_blank">3G安全网</a>站长嗨盗，老牌黑客门户站点。</li>
+<li><a href="http://www.myhack58.com/" rel="noopener" target="_blank">黑吧安全网</a>聚焦网络安全前沿资讯，精华内容，交流技术心得！</li>
+<li><a href="http://www.linuxso.com/" rel="noopener" target="_blank">Linux安全网</a>Linux操作系统、Linux 命令、Linux教程、Linux黑客</li>
+<li><a href="http://www.77169.com/" rel="noopener" target="_blank">华盟网</a>网络安全第一资讯站点！为提升网安全水平做贡献！</li>
+<li><a href="http://www.heixueit.com/" rel="noopener" target="_blank">黑学IT网</a>黑学网致力于为广大网友普及网络黑客安全知识，防范黑客入侵、攻击。</li>
+<li><a href="http://www.41443.com/" rel="noopener" target="_blank">幽灵学院</a>中国权威的菜鸟培训网络技术网站，网络黑客学习基地。</li>
+<li><a href="https://www.sitedirsec.com/" rel="noopener" target="_blank">非安全中国网</a>专业的爱国的网络安全网站，专注于对网络安全的研究。</li>
+<li><a href="http://www.98exe.net/" rel="noopener" target="_blank">南域剑盟</a>专业的网络技术学习网站，专注于网络安全研究问题。</li>
+<li><a href="http://www.yunsec.net/" rel="noopener" target="_blank">中国云安网</a>国内知名的网络信息安全技术门户网站，维护网络安全。</li>
+<li><a href="http://www.hack6.com/" rel="noopener" target="_blank">黑客安全网</a>免费的软件分享园地，不断更新着免费资源的网站。</li>
+<li><a href="http://www.youxia.org/" rel="noopener" target="_blank">游侠安全网</a>专注：网络安全、系统安全、应用安全、数据库安全、运维安全，趋势分析。</li>
+<li><a href="http://www.20cn.net/" rel="noopener" target="_blank">20CN</a>专注网络安全研究与思考，一直在努力。一家资质比较老的网站。</li>
+<li><a href="http://www.secye.com/" rel="noopener" target="_blank">SecYe安全</a>国内网络信息安全学习网站，专注于技术。</li>
+<li><a href="http://hx99.net/" rel="noopener" target="_blank">华西安全网</a>一个专注网络安全的网站，站内内容也是不错的。</li>
+<li><a href="http://www.ourlove520.com/" rel="noopener" target="_blank">IT学习网</a>专业的IT技术学习网站，适合新手大牛。</li>
+<li><a href="http://www.chncto.com/" rel="noopener" target="_blank">安全焦点</a>一个不错的关注于网络安全的网站，很适合对于网络安全爱好者学习。</li>
+<li><a href="http://www.chnlanker.com/" rel="noopener" target="_blank">中国蓝客联盟</a>来自五湖四海，不为别的，只因有共同的爱好，为中国互联网发展出一分力！</li>
+<li><a href="http://www.110hack.com/" rel="noopener" target="_blank">安全黑客</a>专注于网络资源分享，是一个不错的学习技术的网站。</li>
+<li><a href="https://www.t00ls.net/" rel="noopener" target="_blank">T00ls</a>T00ls是当前国内为数不多的民间网络信息安全研究团队之一</li>
+<li><a href="http://www.cnhackhy.com/" rel="noopener" target="_blank">华域联盟</a>华域联盟是国内网络安全技术交流论坛,致力于提供最新的网络技术</li>
+<li><a href="http://www.zghkbb.com/" rel="noopener" target="_blank">黑客标榜</a>黑客学习基地,菜鸟免费学习黑客技术的网站！</li>
+<li><a href="http://www.cnnetsec.com/" rel="noopener" target="_blank">信安实验室</a>有很多Linux安全，移动安全,渗透测试的问题你需要在它网站了解。</li>
+<li><a href="http://www.anquan365.com/" rel="noopener" target="_blank">安全365</a>居安思危，思而有备，有备无患。</li>
+<li><a href="http://www.secist.com/" rel="noopener" target="_blank">即刻安全</a>专注于网络安全的研究学习致力于网络安全，打造氛围良好的技术交流学习领地！</li>
+<li><a href="http://www.176ku.com/" rel="noopener" target="_blank">溜客安全网</a>合购VIP-专注收集各类精品收费教程学习类软件</li>
+<li><a href="http://www.hackmvp.com/" rel="noopener" target="_blank">中华安全基地</a>软件下载,技术文章,草根站长,动画教程,小说下载,电影下载,游戏攻略</li>
+<li><a href="http://www.hackerxfiles.net/" rel="noopener" target="_blank">黑客X档案</a>黑客X档案官方论坛 ，电脑黑客类杂志，也是一本普及类网络安全的杂志。</li>
+<li><a href="http://www.nsoad.com/" rel="noopener" target="_blank">网络攻防小组(WLGF)</a>网络安全新媒体为用户提供文摘与资讯.打造黑客爱好者们交流与分享的社区</li>
+</ul>
+</div>
+</div>
+<div id="blog" class="section mtop">
+<h2 class="title">黑客博客&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/blog.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.qxzxp.com/" rel="noopener" target="_blank">七行者博客</a>专注于网络安全,漏洞发布,渗透技术,是一个综合性黑客技术分享交流平台。</li>
+<li><a href="http://www.t00ts.net/" rel="noopener" target="_blank">The’s Blog</a>关注web安全，提倡黑客文化，推动网络安全為核心价值的非盈利博客!</li>
+<li><a href="http://www.moonsec.com/" rel="noopener" target="_blank">暗月博客</a>暗月博客,打造最专业的网络安全博客，同时记录分享身边事！</li>
+<li><a href="http://www.exehack.net/" rel="noopener" target="_blank">小残’s Blog</a>关注网络安全、IT行业、网络安全文章、互联网安全知识、原创网络安全博客</li>
+<li><a href="http://www.test404.com/" rel="noopener" target="_blank">Test404’Blog</a>致力于安全研究 程序开发，原创工具、网络安全、编程开发等相关文章。</li>
+<li><a href="http://www.chnpanda.com/" rel="noopener" target="_blank">熊猫博客</a>专注于技术，切不可沉湎于技术，是一个基于代码审计、网站安全的博客。</li>
+<li><a href="http://hackxiaoyi.com/" rel="noopener" target="_blank">尐憶’s Blog</a>防黑客博客，黑客攻防，网站安全检测，漏洞曝光与修复，尐憶个人博客。</li>
+<li><a href="http://evilcos.me/" rel="noopener" target="_blank">余弦博客</a>EVILCOS，以黑客那种邪气看待世界 BY 余弦</li>
+<li><a href="http://www.hacksec.cn/" rel="noopener" target="_blank">血梦博客</a>专注于网络安全，渗透测试，代码审计，编程技术，社会工程学。</li>
+<li><a href="https://www.hellosec.cc/" rel="noopener" target="_blank">情小北’s Blog</a>一个网络安全爱好者，白帽子，把时间全部浪费在自己美好的事情上的高中生。</li>
+<li><a href="https://www.hackhp.com/" rel="noopener" target="_blank">Hackhp Blog</a>自娱自乐的一个博客，收集发布自己感兴趣的东西。</li>
+<li><a href="https://www.arvinhk.com/" rel="noopener" target="_blank">Arvin’s Blog</a>Arvin是什么意思?ArVin怎么读?、有心码字，无力坚持！By:Arvin</li>
+<li><a href="https://zmy.im/" rel="noopener" target="_blank">JimmyZhou</a>生活不止是眼前的苟且，还有诗和远方的田野。</li>
+<li><a href="http://www.kavsec.com/" rel="noopener" target="_blank">Kav安全博客</a>个人博客，记录学习点滴&amp;个人情感，仅此而已。</li>
+<li><a href="http://www.wangzhixian.org/" rel="noopener" target="_blank">toT0C</a>都是些简单的技术交流</li>
+<li><a href="http://huaidan.org/" rel="noopener" target="_blank">鬼仔’s Blog</a>主要收集一些网络安全方面的文章和工具，供自己和朋友们学习查阅。</li>
+<li><a href="http://blog.d99net.net/" rel="noopener" target="_blank">啊D Blog</a>以前做过叫“D-元素”的Javascript网站,之后就一直用“啊D”这个名字！</li>
+<li><a href="http://neeao.com/" rel="noopener" target="_blank">Neeao</a>Neeao关注云计算安全的私人博客</li>
+<li><a href="http://429006.com/" rel="noopener" target="_blank">Pop’s Blog</a>Pop’s Blog是国内起步较早的电脑技术博客，该博客创建于2006年。</li>
+<li><a href="http://www.inbreak.net/" rel="noopener" target="_blank">空虚浪子心的灵魂</a>阿里巴巴安全事业部-研究院-前沿安全技术研究</li>
+<li><a href="http://luoq.net/" rel="noopener" target="_blank">amxku’s blog</a>生活记录，技术、实践和经验，amxku’s blog。</li>
+<li><a href="http://www.leesec.com/" rel="noopener" target="_blank">Leesec’s Blog</a>喜欢旅行、街舞、极限运动的黑客Leesec’s个人博客</li>
+<li><a href="http://liluo.me/" rel="noopener" target="_blank">梨落</a>就职于蓝色光标电商事业部，前端技术负责人。</li>
+<li><a href="http://xdxd.love/" rel="noopener" target="_blank">xd_xd</a>安全爱好者</li>
+<li><a href="http://p2j.cn/" rel="noopener" target="_blank">PHP to Java</a>PHP和Java的故事，JavaWeb PHP Web安全</li>
+<li><a href="http://blog.0x7c00.cn/" rel="noopener" target="_blank">Breaker Blog</a>Breaker Blog，作为意志和表象的世界。</li>
+<li><a href="http://26836659.blogcn.com/" rel="noopener" target="_blank">混世魔王</a>创新黑客产业，研究黑客技术，偶尔玩下程序破解病毒木马分析。</li>
+<li><a href="http://www.woyigui.cn/" rel="noopener" target="_blank">WoYiGui</a>在遥远的地方可能还有一些十五岁的年轻人每天花20小时来争取做的更好。</li>
+<li><a href="http://www.afeng.org/" rel="noopener" target="_blank">阿峰博客</a>信息安全，漏洞挖掘,系统安全,终端安全,分享最新0day漏洞安全资讯。</li>
+<li><a href="http://sb.ccav10.cn/" rel="noopener" target="_blank">Tios7片尾曲</a>国内知名潜水党伸手党以及深夜党！</li>
+<li><a href="http://www.cnseay.com/" rel="noopener" target="_blank">Seay博客</a>Seay网络安全博客,记录本人在IT圈子的成长过程,主要渗透测试。</li>
+<li><a href="http://www.blackxl.org/" rel="noopener" target="_blank">黑色.小亮</a>最新互联网信息以及安全漏洞，iPhone,Linux,Unix相关操作系统相关文章。</li>
+<li><a href="http://www.am82.com/" rel="noopener" target="_blank">葡萄树</a>我的时光，停留在了你的角落…</li>
+<li><a href="http://www.unhonker.com/" rel="noopener" target="_blank">90′ s Blog</a>90′ s Blog为了记录自己的成长点滴与技术文章。</li>
+<li><a href="http://www.03389.com/" rel="noopener" target="_blank">樱木花盗’s BLOG</a>黑客樱木花道的独立个人博客</li>
+<li><a href="http://www.uedbox.com/" rel="noopener" target="_blank">体验盒子</a>体验盒子是一个关注互联网安全知识的综合性原创网络安全博客！</li>
+<li><a href="http://www.netfairy.net/" rel="noopener" target="_blank">网络精灵</a>网络精灵：不要害怕未知的。</li>
+<li><a href="http://www.nxadmin.com/" rel="noopener" target="_blank">阿德马Web安全</a>关注Web安全、系统加固、渗透测试，低调求发展！</li>
+<li><a href="https://phpinfo.me/" rel="noopener" target="_blank">Lcy博客</a>Lcy博客记录个人学习,生活博客。</li>
+<li><a href="http://www.waitalone.cn/" rel="noopener" target="_blank">独自等待</a>渗透测试工具及web安全测试技术分享平台。</li>
+<li><a href="http://syclover.sinaapp.com/" rel="noopener" target="_blank">Syclover Team</a>南某地常乐村职业妓院的一群热爱安全技术的小伙伴组成。</li>
+<li><a href="http://www.52bug.cn/" rel="noopener" target="_blank">吾爱漏洞</a>吾爱漏洞，是一个综合性黑客技术分享交流、资源共享平台。</li>
+<li><a href="http://www.mwsl.org.cn/" rel="noopener" target="_blank">恶意实验室</a>一个独特的对于恶意网站研究的博客。</li>
+<li><a href="http://www.windpunish.net/" rel="noopener" target="_blank">i云维</a>在运维圈中研究黑客，在黑客圈中完善运维。</li>
+<li><a href="http://www.zerobox.org/" rel="noopener" target="_blank">ZeroBox</a>全英文的显示，适合大手学习了解，不适合新手菜鸟的园地。</li>
+<li><a href="http://blog.sina.com.cn/hxhackers" rel="noopener" target="_blank">中国黑客</a>中国黑客_新浪博客,中国黑客,杂谈</li>
+<li><a href="http://blog.sina.com.cn/heikehacker" rel="noopener" target="_blank">黑客嘿</a>黑客嘿【网赚项目】实战Java-特级课课程大纲—mysql高级教程</li>
+<li><a href="http://www.tolur.org/forum.php" rel="noopener" target="_blank">IT同路</a>社会工程学交流、分享，网络安全爱好者基地力做最专业的IT技术交流论坛</li>
+<li><a href="http://blog.52hacker.cn/" rel="noopener" target="_blank">泽天丶Blog‘s</a>不定期更新一些黑客技术类文章</li>
+<li><a href="https://www.0dayhack.com/" rel="noopener" target="_blank">颓废’s Blog博客</a>一个关注web安全、热爱黑客技术、热衷于黑帽SEO的个人技术博客</li>
+<li><a href="http://www.hackxc.cc/" rel="noopener" target="_blank">小陈’s Blog博客</a>致力关注于黑客技术、渗透测试、网络信息安全的个人博客</li>
+</ul>
+</div>
+</div>
+<div id="forum" class="section mtop">
+<h2 class="title">黑客论坛&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/forum.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.dute365.cn/" rel="noopener" target="_blank">独特黑客</a>一个不错的黑客交流基地，菜鸟学习园地。</li>
+<li><a href="https://forum.eviloctal.com/" rel="noopener" target="_blank">邪恶八进制</a>专注于网络信息安全的技术讨论论坛。</li>
+<li><a href="http://www.zoyzo.cn/" rel="noopener" target="_blank">左右论坛</a>一个兴起的网络爱好者讨论与学习园地，内容也是不错的。</li>
+<li><a href="http://www.sh3llc0de.com/" rel="noopener" target="_blank">Sh3llc0de安全小组</a>学习网络安全的不错的一个论坛网站。</li>
+<li><a href="http://www.52pojie.cn/" rel="noopener" target="_blank">吾爱破解</a>一个被大家熟知的老牌的网络技术的论坛网站。</li>
+<li><a href="http://www.hack80.com/" rel="noopener" target="_blank">HACK80</a>专注于黑客网络技术分享，技术讨论的论坛网站。</li>
+<li><a href="http://fankewangluo.com/" rel="noopener" target="_blank">饭客网络</a>一个不错的黑客学习论坛网站，一直在不断努力中。</li>
+<li><a href="http://www.vcccc.cn/" rel="noopener" target="_blank">Mersion社区</a>一个适合菜鸟学习网络技术的网站。</li>
+<li><a href="http://www.moonsafe.com/" rel="noopener" target="_blank">暗月信息安全</a>兴起的专注于网络信息安全的学习论坛</li>
+<li><a href="http://www.365cmd.com/" rel="noopener" target="_blank">365网络学院</a>专注于网络安全，网络技术培训的网站论坛。</li>
+<li><a href="http://hackxd.com/" rel="noopener" target="_blank">兄弟网络</a>网络技术学习论坛，网络资源共享论坛。</li>
+<li><a href="http://www.anquanlong.com/" rel="noopener" target="_blank">黑客契约</a>实用的精品黑客技术教程分享，可供新人学习的网站。</li>
+<li><a href="http://bbs.yesmybi.com/" rel="noopener" target="_blank">华中帝国</a>华中帝国论坛致力于黑客技术与免杀技术的交流与研究</li>
+<li><a href="http://www.hackerbbs.cn/" rel="noopener" target="_blank">黑客论坛</a>一个刚刚做起来的黑客论坛，目前更新的内容还是不错的。</li>
+<li><a href="http://bbs.2cto.com/" rel="noopener" target="_blank">红黑论坛</a>专业提供网络安全知识培训的网站，适合小白新手。</li>
+<li><a href="https://www.0xaa55.com/" rel="noopener" target="_blank">技术宅的结界</a>交流计算机编程，动手DIY，计算机维护等各种知识和技巧！</li>
+<li><a href="http://www.jmpoep.com/" rel="noopener" target="_blank">零日安全</a>零日安全论坛是致力于开拓赏金交易与在线培训的论坛</li>
+<li><a href="http://www.cnhackhy.com/forum.php" rel="noopener" target="_blank">华域联盟论坛</a>善者吾善之，不善者吾亦善之，得善。信者吾信之，不信者吾亦信之，得信。</li>
+<li><a href="http://bbs.hackbase.com/" rel="noopener" target="_blank">黑基论坛</a>黑客基地论坛，电脑技术、安全攻防、软件开发</li>
+<li><a href="http://bbs.pediy.com/" rel="noopener" target="_blank">看雪论坛</a>看雪论坛，老牌专业的软件加密解密论坛</li>
+<li><a href="http://www.hegouvip.com/" rel="noopener" target="_blank">合购VIP社区</a>专注收集各种精品教程分享下载交流</li>
+<li><a href="http://www.lthack.com/" rel="noopener" target="_blank">龙天论坛</a>龙天论坛，被行业号称资源分享领导者</li>
+<li><a href="http://www.xiaoqi7.com/" rel="noopener" target="_blank">小七论坛</a>小七技术论坛，曾经在免杀论坛里面最活跃的技术交流</li>
+<li><a href="http://www.kali.org.cn/" rel="noopener" target="_blank">Kali Linux中文网</a>Backtrack、Kali linux操作系统最大的中文交流社区</li>
+<li><a href="http://www.chinapyg.com/" rel="noopener" target="_blank">飘云阁</a>飘云阁安全论坛-PYG，软件安全，破解软件，内购破解，移动安全</li>
+<li><a href="http://bbs.wghostk.com/" rel="noopener" target="_blank">幽灵网安</a>系统幽灵网安论坛,专注研究网络安全.提高国内网络安全水平!</li>
+<li><a href="http://www.metasploit.cn/" rel="noopener" target="_blank">Metasploit</a>Metasploit渗透测试论坛,仅作渗透测试技术交流</li>
+<li><a href="http://www.binvul.com/" rel="noopener" target="_blank">二进制论坛</a>漏洞分析文章，漏洞利用技术，各种奇技淫巧等技术分享</li>
+<li><a href="http://cdlinux.net/" rel="noopener" target="_blank">Cdlinux</a>非官方搭建的用于交流cdlinux系统相关教程的论坛</li>
+<li><a href="http://www.chinacycc.com/" rel="noopener" target="_blank">诚殷技术论坛</a>CYWL TEAM专注于WEB网络安全培训，我们不收取任何费用</li>
+<li><a href="http://www.cnhonkerarmy.com/" rel="noopener" target="_blank">中国红客联盟（冰儿）</a>道，可道，非常道；名，可名，非常名。</li>
+<li><a href="https://www.ihonker.org/" rel="noopener" target="_blank">中国红客联盟（08sec）</a>红客是一种精神，它是一种热爱祖国、坚持正义、开拓进取的精神</li>
+<li><a href="http://www.cnhonker.com/" rel="noopener" target="_blank">中国红客联盟（lion）</a>中国红客网络技术联盟</li>
+<li><a href="http://www.pd521.com/" rel="noopener" target="_blank">逆向未来</a>逆向未来 – 专注于移动安全领域</li>
+<li><a href="http://www.52fzba.com/" rel="noopener" target="_blank">我爱辅助</a>我爱辅助论坛是综合交流当下比较热门外挂的交流论坛</li>
+<li><a href="http://www.bugscan.net/" rel="noopener" target="_blank">BugScan</a>一个不错的提供漏洞会有相应回报的网站，适合大家去看看。</li>
+<li><a href="http://www.heikexiehui.com/" rel="noopener" target="_blank">中国黑客协会</a>站内主要发布一些，hack入侵,服务器配置等黑客教程。</li>
+<li><a href="http://www.tolur.org/forum.php" rel="noopener" target="_blank">IT同路</a>社会工程学交流、分享，网络安全爱好者基地力做最专业的IT技术交流论坛</li>
+<li><a href="http://www.heishou.com.cn/" rel="noopener" target="_blank">黑手安全网</a>网络安全技术交流论坛致力于提供最新的网络技术最全的动画教程及安全培训</li>
+<li><a href="http://www.sh3llc0de.com/forum.php" rel="noopener" target="_blank">ShellCode安全联盟</a>发布安全工具，渗透工具，原创工具，各类神器，原创安全技术文章</li>
+</ul>
+</div>
+</div>
+<div id="microblog" class="section mtop">
+<h2 class="title">黑客微博&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/microblog.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://weibo.com/xudaodaoc" rel="noopener" target="_blank">危险漫步</a>危险漫步的个人博客，黑客技术相关研究及思考</li>
+<li><a href="http://weibo.com/wantao2001" rel="noopener" target="_blank">万涛[老鹰]微博</a>鹰眼安全文化网发起者，中国计算机取证专家委员会成员。</li>
+<li><a href="http://weibo.com/7situ" rel="noopener" target="_blank">7situ微博</a>知名网络安全专家张海涛</li>
+<li><a href="http://weibo.com/sunwe4r" rel="noopener" target="_blank">sunwear微博</a>信息安全、网络安全、信息战、网络战专家</li>
+<li><a href="http://weibo.com/207900051" rel="noopener" target="_blank">羽度非凡微博</a>非凡网络科技有限公司 CEO</li>
+<li><a href="http://weibo.com/d99net" rel="noopener" target="_blank">啊D微博</a>关注网络安全，维护网络安全。</li>
+<li><a href="http://weibo.com/318288567" rel="noopener" target="_blank">AGL菜菜微博</a>按键精灵开发者</li>
+<li><a href="http://weibo.com/garypc" rel="noopener" target="_blank">风乐凌云微博</a>彭成，天域网络信息科技有限公司CEO</li>
+<li><a href="http://weibo.com/175589438" rel="noopener" target="_blank">网路游侠</a>张百川，资深安全顾问，游侠安全网站长、首席信息安全官网创始人</li>
+<li><a href="http://weibo.com/hackwinck" rel="noopener" target="_blank">By-Winck微博</a>网络安全爱好者，致力学习网络技术。</li>
+<li><a href="http://weibo.com/goodwell2010" rel="noopener" target="_blank">绿色兵团-龚蔚微博</a>中国黑客元老，知名网络安全专家，绿色兵团创始人，COG安全组织创建人</li>
+<li><a href="http://weibo.com/138385188" rel="noopener" target="_blank">七皇子微博</a>王飞 隐者信息安全核心成员 金华和盛堂医药 副总经理兼网络总监</li>
+<li><a href="http://weibo.com/xiongmaoshaoxiang" rel="noopener" target="_blank">熊猫烧香李俊微博</a>著名的二进宫专家，致力于犯罪科技。</li>
+<li><a href="http://weibo.com/87005225" rel="noopener" target="_blank">刘朝辉微博</a>网络信息安全专家，信息安全评估专家。</li>
+<li><a href="http://weibo.com/topiceyes" rel="noopener" target="_blank">XMD5汪利辉</a>XMD5解密网站长,资深安全顾问</li>
+<li><a href="http://weibo.com/zwell" rel="noopener" target="_blank">白帽汇赵武</a>安全软件Pangolin、JSky作者。</li>
+<li><a href="http://weibo.com/evilcos" rel="noopener" target="_blank">余弦</a>知道创宇技术副总裁</li>
+<li><a href="http://weibo.com/k0pwn" rel="noopener" target="_blank">k0shl</a>一只努力的小菜鸡 —— k0shl&amp;&amp;k0_pwn</li>
+<li><a href="http://weibo.com/aydge" rel="noopener" target="_blank">阿吉_Aydge</a>业余互联网观察员/网络安全从业者/前码农/产品经理</li>
+<li><a href="http://weibo.com/u/5582811274" rel="noopener" target="_blank">BruceKnownsec</a>白帽子黑客，陕西知道创宇创始人</li>
+<li><a href="http://weibo.com/1937cnteam" rel="noopener" target="_blank">越南邻国宰相</a>火蚁反病毒科技有限公司技术总监刘永发，1937cn创始人</li>
+<li><a href="http://weibo.com/ghostm55" rel="noopener" target="_blank">ghosTM55</a>上海市东革志信息科技有限公司首席执行官</li>
+<li><a href="http://weibo.com/u/1803553987" rel="noopener" target="_blank">h4ckmp</a>资深中国公民、资深股市韭菜、信息安全混混</li>
+<li><a href="http://weibo.com/zhengmin1989" rel="noopener" target="_blank">蒸米spark</a>OverSky, 蓝莲花和Insight-labs成员。发现并命名了XcodeGhost和WormHole</li>
+<li><a href="http://weibo.com/navisec" rel="noopener" target="_blank">NaviSec</a>网络安全人员爱用的网络导航 — 纳威安全导航创始人</li>
+<li><a href="http://weibo.com/mottoin" rel="noopener" target="_blank">MottoIN</a>关注互联网信息安全的科技媒体</li>
+</ul>
+</div>
+</div>
+<div id="qq" class="section mtop">
+<h2 class="title">QQ黑客&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/qq.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.qqyewu.com/" rel="noopener" target="_blank">QQ业务乐园</a>国内著名的老牌qq技术网站，始建于2008。如今也是家喻户晓的网站。</li>
+<li><a href="http://www.jishuqq.com/" rel="noopener" target="_blank">技术QQ网</a>国内最大的免费qq技术学习基地，始建于2008年。</li>
+<li><a href="http://www.txzshc.com/" rel="noopener" target="_blank">钻石皇朝</a>始建于2012年，从社区改建为教程网，如今深受大家喜爱。</li>
+<li><a href="http://www.qqhjy.com/" rel="noopener" target="_blank">QQ好基友</a>成立于2013年，如今不断发展壮大，不断提升内容质量。</li>
+<li><a href="http://www.wy96.com/" rel="noopener" target="_blank">QQ网域帝国</a>国内后起的深受菜鸟信任和喜爱的网络技术交流和学习的资源共享综合网站</li>
+<li><a href="http://www.qqzywang.com/" rel="noopener" target="_blank">QQ资源网</a>始建于2014年，主要发布QQ技术,QQ教程，QQ图标点亮等QQ业务。</li>
+<li><a href="http://www.qqguoji.com/" rel="noopener" target="_blank">QQ国际网络</a>提供优质的网络QQ技术分享教程。</li>
+<li><a href="http://www.xiaodao.la/" rel="noopener" target="_blank">小刀娱乐网</a>专注于网络QQ技术分享的平台</li>
+<li><a href="http://www.xf1433.com/" rel="noopener" target="_blank">小风教程网</a>免费的qq黑客技术学习网站，可供新手菜鸟学习。</li>
+<li><a href="http://www.qqhzg.com/" rel="noopener" target="_blank">QQ皇族馆</a>一个不错的关于qq网络技术的学习网站。</li>
+<li><a href="http://www.qqpaopao.com/" rel="noopener" target="_blank">QQ泡泡乐园</a>免费的qq技术福利网站。</li>
+<li><a href="http://www.xiaoheizy.com/" rel="noopener" target="_blank">筱黑资源网</a>一个资源丰富的qq技术学习网站，内容更新也不错。</li>
+<li><a href="http://www.qqjswang.com/" rel="noopener" target="_blank">QQ技术网</a>专注于qq技术分享，qq福利分享的网站。</li>
+<li><a href="http://www.iqshw.com/" rel="noopener" target="_blank">爱Q生活网</a>专注于qq活动福利分享的平台，是个不错的网站。</li>
+<li><a href="http://www.qqtn.com/" rel="noopener" target="_blank">腾牛网</a>专注于软件下载开发破解的平台。</li>
+<li><a href="http://www.qzone520.com/" rel="noopener" target="_blank">我爱空间网</a>专注于qq空间，打造更多实惠的福利分享。</li>
+<li><a href="http://www.qqshenhua.com/" rel="noopener" target="_blank">QQ神话网</a>专注于qq资源下载的网站，适合学习网络的小白们。</li>
+<li><a href="http://www.52dfg.com/" rel="noopener" target="_blank">巅峰阁社区</a>是个资格比较老的网站，专注于精品qq技术教程分享。</li>
+<li><a href="http://qqtz.com/" rel="noopener" target="_blank">TZ论坛</a>提供免费平台交易的qq技术论坛网站，内容更新都还不错。</li>
+<li><a href="http://www.qqboke.cn/" rel="noopener" target="_blank">QQ糖果乐园</a>每天更新大量精品教程，众多qq技巧，福利，活动。</li>
+<li><a href="http://www.hackhw.com/" rel="noopener" target="_blank">QQ黑域基地</a>专注于qq活动福利的网站，内容正在不断筹备中。</li>
+<li><a href="http://www.qqhuangdu.com/" rel="noopener" target="_blank">QQ皇都乐园</a>专注于免费资源分享供大家学习的网站，是个不错的站点。</li>
+<li><a href="http://www.gdlhx.com/" rel="noopener" target="_blank">群英软件</a>主要经营：各类QQ，微信，群发软件以及破解。</li>
+</ul>
+</div>
+</div>
+<div id="security" class="section mtop">
+<h2 class="title">网络安全&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/security.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://cve.scap.org.cn/" rel="noopener" target="_blank">CVE漏洞信息库</a>高度集成了大量信息安全相关的标准和各种漏洞数据库，一个不错的网站。</li>
+<li><a href="https://www.seebug.org/" rel="noopener" target="_blank">漏洞信息库</a>一个权威的漏洞参考、分享学习的安全漏洞平台,是国内最早最权威的漏洞库</li>
+<li><a href="http://www.nsfocus.net/" rel="noopener" target="_blank">绿盟科技</a>基于多年的安全攻防研究，涉及多方面的网络运维等领域。</li>
+<li><a href="https://butian.360.cn/" rel="noopener" target="_blank">补天漏洞</a>企业和白帽子共赢的网络平台，独特的漏洞悬赏模式。</li>
+<li><a href="https://www.bigniu.com/" rel="noopener" target="_blank">比戈大牛</a>专注于安卓漏洞的研究的一家网站</li>
+<li><a href="http://www.venustech.com.cn/" rel="noopener" target="_blank">启明星辰</a>国际领先的网络安全信息研究网站</li>
+<li><a href="http://www.secbox.cn/" rel="noopener" target="_blank">安全盒子</a>专注于网络安全的科技媒体</li>
+<li><a href="http://www.heetian.com/" rel="noopener" target="_blank">合天智慧</a>专业性的服务网站，适合企业·公司。</li>
+<li><a href="http://www.cert.org.cn/" rel="noopener" target="_blank">国家互联网安全中心</a>国家互联网安全救急中心，专为互联网安全而生。</li>
+<li><a href="http://netsecurity.51cto.com/" rel="noopener" target="_blank">51CTO频道</a>51CTO网络安全频道，为着网络安全一直在奋斗努力。</li>
+<li><a href="http://www.freebuf.com/" rel="noopener" target="_blank">黑客与极客</a>FreeBuf黑客与极客,国内关注度最高的全球互联网安全媒体平台</li>
+<li><a href="http://www.knownsec.com/" rel="noopener" target="_blank">知道创宇</a>知道创宇成立于2007年，由数位国际顶尖的安全专家创办</li>
+<li><a href="http://bigsec.com/" rel="noopener" target="_blank">岂安科技</a>是一段漫长的跋涉，但最终：岂安会让互联网风控更简单</li>
+<li><a href="http://slab.qq.com/" rel="noopener" target="_blank">腾讯安全实验室</a>腾讯安全联合实验室是腾讯公司旗下的安全战略布局，是体系性的安全解决方案</li>
+<li><a href="http://bobao.360.cn/" rel="noopener" target="_blank">安全客</a>安全客平台，为广大安全爱好者和安全从业人员提供权威信息发布的漏洞信息</li>
+<li><a href="https://sec.ctrip.com/" rel="noopener" target="_blank">携程安全中心</a>携程外部同仁向我们反馈携程旅行网的安全漏洞</li>
+<li><a href="http://www.owasp.org.cn/" rel="noopener" target="_blank">OWASP中国</a>OWASP是开源的、非盈利的全球性安全组织，致力于应用软件的安全研究</li>
+<li><a href="http://www.bugscan.net/" rel="noopener" target="_blank">漏洞插件</a>bugscan是国内首个广泛收集最新最全漏洞及漏洞检测插件的众筹式社区</li>
+<li><a href="https://sec-wiki.com/" rel="noopener" target="_blank">SecWiki</a>专注安全领域最新资讯、专题和导航，做高质量聚合与评论</li>
+<li><a href="http://www.ichunqiu.com/" rel="noopener" target="_blank">i春秋</a>i春秋网络安全培训学院是中国最有影响力的网络安全培训机构</li>
+<li><a href="http://www.looip.cn/" rel="noopener" target="_blank">极客邦</a>极客邦是专注提供技术服务的在线平台，一键匹配快速锁定合作伙伴</li>
+<li><a href="http://www.cnns.net/" rel="noopener" target="_blank">安络科技</a>国内领先的网络安全系统解决方案和服务供应商，网络安全反黑技术的领导者</li>
+<li><a href="http://www.secbug.org/" rel="noopener" target="_blank">破晓团队</a>路虽远 行则必达 事虽难 做则必成</li>
+<li><a href="https://www.secpulse.com/" rel="noopener" target="_blank">安全脉搏</a>高质量的全球互联网安全媒体和技术平台</li>
+<li><a href="http://www.ijiandao.com/" rel="noopener" target="_blank">网络尖刀</a>洞悉互联网企业级服务市场，挖掘互联网与移动互联网行业发展规律及数据价值</li>
+<li><a href="http://www.safedog.cn/" rel="noopener" target="_blank">安全狗</a>安全狗为国内该领域用户量最大的云安全服务平台。</li>
+<li><a href="http://www.dbappsecurity.com.cn/" rel="noopener" target="_blank">安恒信息</a>安恒信息技术有限公司是一家致力于企业和运营商网络一揽子解决方案提供商</li>
+<li><a href="http://www.bluedon.com/" rel="noopener" target="_blank">蓝盾</a>蓝盾 – 智慧安全领导者</li>
+<li><a href="http://www.topsec.com.cn/" rel="noopener" target="_blank">天融信</a>天融信_可信网络 安全世界</li>
+<li><a href="http://www.ineice.com/" rel="noopener" target="_blank">爱内测</a>爱内测是国内首家移动应用内测云服务平台</li>
+<li><a href="http://www.secwk.com/" rel="noopener" target="_blank">威客安全</a>这里有许多白帽子和诚信的厂商及销售，快来加入我们吧！</li>
+<li><a href="https://sobug.com/" rel="noopener" target="_blank">SOBUG</a>Sobug漏洞悬赏平台是一个连接安全专家与厂商的网络安全漏洞悬赏平台</li>
+<li><a href="http://0day5.com/" rel="noopener" target="_blank">漏洞时代</a>漏洞时代0day，最新漏洞发布研究思考</li>
+<li><a href="https://www.easyaq.com/" rel="noopener" target="_blank">E安全</a>E安全，每日提供优质全球网络安全资讯与信息安全深度思考</li>
+<li><a href="http://www.mottoin.com/" rel="noopener" target="_blank">猫头鹰</a>MottoIN-专注于互联网信息安全的科技媒体，安全舆情早知道</li>
+<li><a href="https://www.exploit-db.com/" rel="noopener" target="_blank">Exploit-Db</a>利用数据库–终极存档漏洞，Shellcode，和安全篇</li>
+<li><a href="https://www.vulbox.com/" rel="noopener" target="_blank">盒子黑板报</a>漏洞盒子是一个高效的互联网安全测试平台，帮助你发现产品中潜在的安全漏洞</li>
+<li><a href="https://www.aqdog.com/" rel="noopener" target="_blank">安犬漏洞</a>针对于全球漏洞特征的收集，最新漏洞信息的发布。</li>
+</ul>
+</div>
+</div>
+<div id="tools" class="section mtop">
+<h2 class="title">在线工具&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/tools.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.123cha.com/" rel="noopener" target="_blank">手机号定位</a>最专业ip数据库、手机号数据库、列车时刻数据库</li>
+<li><a href="http://www.ip138.com/" rel="noopener" target="_blank">IP查询</a>手机电脑都可使用，一个不错的ip查询网站。</li>
+<li><a href="http://www.cmd5.com/" rel="noopener" target="_blank">C-MD5在线破解</a>md5在线解密破解，md5在线解密加密等，是不错的一个老牌网站。</li>
+<li><a href="http://www.xmd5.com/" rel="noopener" target="_blank">X-MD5在线破解</a>专业而且免费功能强大的md5解密加密网站。</li>
+<li><a href="https://whois.aliyun.com/" rel="noopener" target="_blank">whios查询</a>域名信息查询（WHOIS）域名所有者、到期日、所属注册商等信息想查就查</li>
+<li><a href="http://www.hac-ker.net/" rel="noopener" target="_blank">被黑网站查询</a>专业统计被黑网站数据资料</li>
+<li><a href="https://fireeye.ijinshan.com/" rel="noopener" target="_blank">火眼软件行为检查</a>金山公司-专业权威的网络安全服务提供商。</li>
+<li><a href="http://tool.chinaz.com/" rel="noopener" target="_blank">站点综合排名查询</a>站长之家推出的服务，很适合广大站长使用。</li>
+<li><a href="http://image.baidu.com/" rel="noopener" target="_blank">百度图片搜索</a>百度图片使用世界前沿的人工智能技术</li>
+<li><a href="http://c.70sec.com/" rel="noopener" target="_blank">网页C段旁注查询</a>专业为广大站长提供网站安全检测服务</li>
+<li><a href="http://www.hao7188.com/" rel="noopener" target="_blank">ip查询（精准）</a>IP地址查询是目前互联网最详细、数据最多、误差最小的网站之一</li>
+<li><a href="http://hashtoolkit.com/" rel="noopener" target="_blank">Hash md5</a>搜索超过6443920432解密MD5和SHA1哈希</li>
+<li><a href="https://www.guerrillamail.com/zh/inbox" rel="noopener" target="_blank">Guerrilla临时邮箱</a>Guerrilla邮箱 – 一次性临时邮箱</li>
+<li><a href="http://24mail.chacuo.net/" rel="noopener" target="_blank">24小时邮箱</a>比十分钟邮箱保持时间更长，可以任意设置邮箱名，随时更换邮箱</li>
+<li><a href="http://www.yopmail.com/zh/" rel="noopener" target="_blank">YOPmail邮箱</a>提供临时和匿名的邮箱地址，免费的临时邮箱来避免垃圾邮件</li>
+<li><a href="http://www.sojson.com/httpRequest" rel="noopener" target="_blank">POST/GET模拟</a>协议有：Post、GetDelete、Put、Trace、Head、Options请求</li>
+<li><a href="http://tool.c7sky.com/password/" rel="noopener" target="_blank">随机密码生成</a>随机密码生成器，随机字符串生成器</li>
+<li><a href="http://www.wmd5.com/" rel="noopener" target="_blank">Wmd5</a>针对md5等全球通用加密算法进行反向解密，直接输入明文可显示密文</li>
+<li><a href="http://www.dmd5.com/" rel="noopener" target="_blank">Dmd5</a>本站提供16位, 20位,32位,base64, 双重 MD5加密</li>
+<li><a href="http://pmd5.com/" rel="noopener" target="_blank">Pmd5</a>加raid硬盘盒,重构数据,提升数据规模,总数据量达到10T+</li>
+<li><a href="http://hashtoolkit.com/" rel="noopener" target="_blank">Best MD5</a>搜索超过6561242461解密MD5和SHA1哈希</li>
+<li><a href="http://cmd5.la/" rel="noopener" target="_blank">md5啦</a>本站提供16位,20位,32位,40位MD5解密,md5码都是免费解密</li>
+<li><a href="http://md5.gromweb.com/" rel="noopener" target="_blank">Gromweb MD5</a>MD5转换和MD5反向查找</li>
+<li><a href="http://md5.navisec.it/" rel="noopener" target="_blank">纳威MD5</a>MD5算法在线解密破解服务，已达数万万亿条，速度更快，成功率更高</li>
+<li><a href="http://www.md5.cc/" rel="noopener" target="_blank">MD5 CC</a>本系统在设计结构上面参考多个md5在线查询网站，取其结构之优点</li>
+<li><a href="https://nosec.org/" rel="noopener" target="_blank">NOSEC大数据</a>像黑客一样思考只有更好的理解攻击来源和途径，才能更好的实施防护。</li>
+<li><a href="https://www.zoomeye.org/" rel="noopener" target="_blank">钟馗之眼</a>使用 ZoomEye 的能力为您构建有意思的应用ZoomEye</li>
+<li><a href="https://dnsdb.io/zh-cn/" rel="noopener" target="_blank">DNS检索</a>DnsDB数据库拥有超过13亿条数据</li>
+<li><a href="http://c.70sec.com/" rel="noopener" target="_blank">C段查询</a>70sec在线C段旁注查询工具主要是查询C段域名,同IP网站查询</li>
+<li><a href="http://xss-scanner.com/" rel="noopener" target="_blank">XSS扫描</a>XSS扫描在线扫描平台，GET及POST提交方式</li>
+<li><a href="http://www.durkadevi.com/sound/scan.php" rel="noopener" target="_blank">SQLi扫描</a>mirpur自由克什米尔</li>
+<li><a href="http://www.cduan.cc/" rel="noopener" target="_blank">端口扫描</a>通过端口扫描，可以发现系统的安全漏洞，或者是系统所开放的服务。</li>
+<li><a href="http://nmap.online-domain-tools.com/" rel="noopener" target="_blank">在线Nmap</a>在线Nmap扫描，国外稳定扫描站点</li>
+<li><a href="https://habo.qq.com/" rel="noopener" target="_blank">哈勃分析</a>哈勃分析系统，腾讯文件分析，保驾护航精准查杀</li>
+<li><a href="http://www.sitedirsec.com/tool/" rel="noopener" target="_blank">非安全工具</a>网络基础设施安全漏洞识别，评估企业内部系统和机密信息风险，安全技术交流</li>
+<li><a href="https://x.threatbook.cn/" rel="noopener" target="_blank">威胁分析</a>国内第一个综合性的威胁分析平台，秉承公开、免费、自由注册的原则。</li>
+</ul>
+</div>
+</div>
+<div id="abroad" class="section mtop">
+<h2 class="title">国外黑客&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/abroad.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="https://www.2600.com/" rel="noopener" target="_blank">2600</a>黑客季刊新闻，国外黑客在线杂志</li>
+<li><a href="http://hackerspaces.org/" rel="noopener" target="_blank">Hacker Spaces</a>那里的人们分享他们在摆弄技术的兴趣，满足他们的项目和工作，互相学习</li>
+<li><a href="http://www.blackhat.com/" rel="noopener" target="_blank">Black Hat</a>Black Hat是世界上最具技术性和相关的全球信息安全网站。</li>
+<li><a href="http://www.securiteam.com/" rel="noopener" target="_blank">Securi Team</a>Securi Team-免费的准确和独立的漏洞信息源</li>
+<li><a href="http://www.guninski.com/" rel="noopener" target="_blank">Guninski</a>安全专家Guninski的主页，有大量由系统漏洞</li>
+<li><a href="http://www.ussrback.com/" rel="noopener" target="_blank">USSR</a>苏联队，国外知名网络安全站点</li>
+<li><a href="http://insecure.org/" rel="noopener" target="_blank">Gordon Lyon</a>Gordon Lyon，一位经常在互联网上混的黑客</li>
+<li><a href="http://www.antionline.com/" rel="noopener" target="_blank">Antionline</a>Antionline论坛-世界最大安全连接统计</li>
+<li><a href="https://packetstormsecurity.com/" rel="noopener" target="_blank">Packet Storm</a>国外大型资料全面的黑客安全咨询网站</li>
+<li><a href="http://www.w00w00.org/" rel="noopener" target="_blank">w00w00</a>国外著名黑客组织w00w00的主页</li>
+<li><a href="http://phrack.org/" rel="noopener" target="_blank">Phrack</a>Phrack的主页，经典的黑客技术电子杂志</li>
+<li><a href="http://astalavista.box.sk/" rel="noopener" target="_blank">astalavista box</a>astalavista box安全相关的网站搜索引擎</li>
+<li><a href="http://www.expku.com/" rel="noopener" target="_blank">EXP库</a>一个对于EXP的全英文黑客网站，感兴趣的可以去学习学习。</li>
+</ul>
+</div>
+</div>
+<div id="code" class="section mtop">
+<h2 class="title">代码风云&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/code.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="http://www.php100.com/" rel="noopener" target="_blank">PHP中文网</a>专业的PHP知识学习，讨论园地。</li>
+<li><a href="http://www.jb51.net/" rel="noopener" target="_blank">脚本之家</a>专注于脚本的老牌网站了，适合大家去学习。</li>
+<li><a href="http://bbs.125.la/" rel="noopener" target="_blank">精易论坛</a>专注于E语言编程的网站，适合感兴趣的朋友去学习。</li>
+<li><a href="http://www.dywt.com.cn/" rel="noopener" target="_blank">易语言官网</a>最受大家欢迎的网络编程软件，其作用巨大。</li>
+<li><a href="http://www.2ebc.com/" rel="noopener" target="_blank">爱易编程</a>专注于网络编程，易语言开发的网站，适合大家去学习。</li>
+<li><a href="http://www.cctry.com/" rel="noopener" target="_blank">VC驿站</a>VC驿站是专注于C语言、C++、MFC 方面的编程交流平台</li>
+<li><a href="http://www.bccn.net/" rel="noopener" target="_blank">编程中国</a>编程中国 – 中国最大的编程网站</li>
+<li><a href="http://www.mcuc.com.cn/" rel="noopener" target="_blank">单片机日记</a>单片机入门教程日记，一个从零开始学习单片机C语言编程最好的网站！</li>
+<li><a href="http://www.codeceo.com/" rel="noopener" target="_blank">码农网</a>帮助程序员在编程开发中获取第一手的实用资料</li>
+<li><a href="https://linux.cn/" rel="noopener" target="_blank">Linux中国</a>Linux中国是一家创立于2003年的国内开源社区</li>
+<li><a href="http://www.html5tricks.com/" rel="noopener" target="_blank">HTML5资源</a>HTML5资源教程 | 分享HTML5开发资源和开发教程</li>
+<li><a href="http://www.tianya88.com/" rel="noopener" target="_blank">天涯驿站</a>易语言专业技术交流易语言论坛,为广大易友提供大量的易语言教程</li>
+<li><a href="http://bbs.pfan.cn/" rel="noopener" target="_blank">编程爱好者</a>中文编程开发类网站，提供编程文章、开发工具、资料下载等多个栏目</li>
+<li><a href="http://www.centoscn.com/" rel="noopener" target="_blank">CentOS中文</a>CentOS中文网可以帮助IT管理人员摆脱枯燥无味的学习方法</li>
+<li><a href="http://www.linuxdiyf.com/" rel="noopener" target="_blank">红联Linux</a>Linux系统门户，专注Linux技术支持的门户网站，用户遍布全国各地</li>
+<li><a href="http://www.admin10000.com/" rel="noopener" target="_blank">WEB开发者</a>网站开发人员学习交流的平台,这里提供大量实用的技术文档及相关资源下载</li>
+<li><a href="http://www.mengmeng666.com/" rel="noopener" target="_blank">梦梦资源网</a>免费资源分享 游戏和商业源码分享</li>
+<li><a href="http://www.suibianlu.com/" rel="noopener" target="_blank">随便撸源码</a>精品网站源码,织梦建站模版,游戏源代码分享平台</li>
+<li><a href="http://www.zye.cc/" rel="noopener" target="_blank">资源E站</a>专注收集ASP、PHP、NET各类网站源码分享、站长教程、软件为一体的资源论坛</li>
+<li><a href="https://www.5kym.com/" rel="noopener" target="_blank">悟空源码网</a>分享精品网站模板源码,商业破解源码,企业网站模板,等精品PHP源码</li>
+<li><a href="http://bbs.sasadown.cn/" rel="noopener" target="_blank">莎莎源码论坛</a>国内著名的免费精品源码分享社区！</li>
+</ul>
+</div>
+</div>
+<div id="killing" class="section mtop">
+<h2 class="title">病毒查杀&nbsp;<a class="more" href="http://www.hackerdoor.com/Index/killing.html" target="_blank" rel="noopener">更多&gt;&gt;</a></h2>
+<div class="content">
+<ul class="time-list clearfix">
+<li><a href="http://www.weixianmanbu.com/" rel="noopener" target="_blank">危险漫步&nbsp;<img src="http://www.hackerdoor.com/Public/Skins/hot.gif" alt=""></a>新鲜的“黑客思维”，从更高的层面去思考；专注于技术交流分享的独立博客。</li>
+<li><a href="https://virusscan.jotti.org/" rel="noopener" target="_blank">国外在线查杀网站</a>Jotti的恶意软件扫描程序是免费服务，使用几个反病毒程序扫描可疑文件</li>
+<li><a href="http://www.rising.com.cn/" rel="noopener" target="_blank">瑞星</a>国内最著名的老牌网站，是个实力权威的网站。</li>
+<li><a href="http://www.virscan.org/" rel="noopener" target="_blank">世界杀毒网</a>是一个非盈利性的免费为广大网友服务的在线杀毒网站</li>
+<li><a href="http://guanjia.qq.com/" rel="noopener" target="_blank">电脑管家</a>被大家熟知且认可的专业性腾讯电脑杀毒软件。</li>
+<li><a href="http://sd.360.cn/" rel="noopener" target="_blank">360杀毒</a>360免费安全软件平台为用户提供360安全卫士</li>
+<li><a href="http://anquan.baidu.com/" rel="noopener" target="_blank">百度杀毒</a>搭载百度自研双引擎雪狼引擎、慧眼引擎，采用百度独有的“深度学习”技术</li>
+<li><a href="http://www.ijinshan.com/" rel="noopener" target="_blank">金山杀毒</a>金山网络是国内老牌的安全软件平台。</li>
+<li><a href="http://www.kaspersky.com.cn/" rel="noopener" target="_blank">卡巴斯基</a>卡巴斯基反病毒软件是世界上拥有最尖端科技的杀毒软件之一，总部俄罗斯</li>
+<li><a href="http://www.avira.com/" rel="noopener" target="_blank">小红伞</a>Avira AntiVir是一套由德国的Avira公司所开发的杀毒软件。</li>
+<li><a href="http://www.drweb.cn/" rel="noopener" target="_blank">大蜘蛛</a>Doctor Web公司是世界著名的反病毒产品和解决方案提供商</li>
+<li><a href="http://www.mcafee.com/cn/index.html" rel="noopener" target="_blank">迈克菲</a>Intel和TPG提出建设独立McAfee公司的战略合作伙伴关系</li>
+<li><a href="http://www.jiangmin.com/" rel="noopener" target="_blank">江民杀毒</a>江民科技，国内最早的反病毒公司</li>
+</ul>
+</div>
+</div>
+</div>
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/222.JPG">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -341,84 +577,16 @@ var example1 = new Vue({
 
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/heike/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://guanran.github.io/2019/03/17/vuejs2/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/05/01/myjl/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          简历信息
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/03/13/vuejs/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue.js基础语法</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -438,14 +606,98 @@ var example1 = new Vue({
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/21/hello-world/">古训</a>
+    </h1>
   
 
+        
+        <a href="/2017/03/21/hello-world/" class="archive-article-date">
+  	<time datetime="2017-03-21T07:21:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to my space .</p>
+<h2 id="《增广贤文》"><a href="#《增广贤文》" class="headerlink" title="《增广贤文》"></a>《增广贤文》</h2><p>昔时贤文，诲汝谆谆，集韵增文，多见多闻<br/>观今宜鉴古，无古不成今<br/>知己知彼，将心比心<br/>酒逢知己饮，诗向会人吟<br/>相识满天下，知心能几人<br/>相逢好似初相识，到老终无怨恨心<br/>近水知鱼性，近山识鸟音<br/>易涨易退山溪水，易反易覆小人心<br/>运去金成铁，时来铁似金，读书须用意，一字值千金<br/>逢人且说三分话，未可全抛一片心<br/>有意栽花花不发，无心插柳柳成阴<br/>画虎画皮难画骨，知人知面不知心<br/>钱财如粪土，仁义值千金<br/>流水下滩非有意，白云出岫本无心<br/>当时若不登高望，谁信东流海洋深<br/>路遥知马力，事久见人心<br/>两人一般心，无钱堪买金，一人一般心，有钱难买针<br/>相见易得好，久住难为人<br/>马行无力皆因瘦，人不风流只为贫<br/>饶人不是痴汉，痴汉不会饶人<br/>是亲不是亲，非亲却是亲<br/>美不美，乡中水，亲不亲，故乡人<br/>莺花犹怕春光老，岂可教人枉度春<br/>相逢不饮空归去，洞口桃花也笑人<br/>红粉佳人休使老，风流浪子莫教贫<br/>在家不会迎宾客，出外方知少主人<br/>黄金无假，阿魏无真<br/>客来主不顾，应恐是痴人<br/>贫居闹市无人问，富在深山有远亲<br/>谁人背后无人说，哪个人前不说人<br/>有钱道真语，无钱语不真<br/>不信但看筵中酒，杯杯先劝有钱人<br/>闹里有钱，静处安身<br/>来如风雨，去似微尘<br/>长江后浪推前浪，世上新人赶旧人<br/>近水楼台先得月，向阳花木早逢春<br/>莫道君行早，更有早行人<br/>莫信直中直，须防仁不仁<br/>山中有直树，世上无直人<br/>自恨枝无叶，莫怨太阳偏<br/>大家都是命，半点不由人<br/>一年之计在于春，一日之计在于寅，一家之计在于和，一生之计在于勤<br/>责人之心责己，恕己之心恕人<br/>守口如瓶，防意如城<br/>宁可人负我，切莫我负人<br/>再三须慎意，第一莫欺心<br/>虎生犹可近，人熟不堪亲<br/>来说是非者，便是是非人<br/>远水难救近火，远亲不如近邻<br/>有茶有酒多兄弟，急难何曾见一人<br/>人情似纸张张薄，世事如棋局局新<br/>山中也有千年树，世上难逢百岁人<br/>力微休负重，言轻莫劝人<br/>无钱休入众，遭难莫寻亲<br/>平生莫作皱眉事，世上应无切齿人<br/>士者国之宝，儒为席上珍<br/>若要断酒法，醒眼看醉人<br/>求人须求大丈夫，济人须济急时无<br/>渴时一滴如甘露，醉后添杯不如无<br/>久住令人贱，频来亲也疏<br/>酒中不语真君子，财上分明大丈夫<br/>出家如初，成佛有余<br/>积金千两，不如明解经书<br/>养子不教如养驴，养女不教如养猪<br/>有田不耕仓廪虚，有书不读子孙愚<br/>仓廪虚兮岁月乏，子孙愚兮礼义疏<br/>同君一席话，胜读十年书<br/>人不通今古，马牛如襟裾<br/>茫茫四海人无数，哪个男儿是丈夫<br/>白酒酿成缘好客，黄金散尽为收书<br/>救人一命，胜造七级浮屠<br/>城门失火，殃及池鱼<br/>庭前生瑞草，好事不如无<br/>欲求生富贵，须下死工夫<br/>百年成之不足，一旦败之有余<br/>人心似铁，官法如炉<br/>善化不足，恶化有余<br/>水太清则无鱼，人至察则无徒<br/>知者减半，省者全无<br/>在家由父，出家从夫<br/>痴人畏妇，贤女敬夫<br/>是非终日有，不听自然无<br/>宁可正而不足，不可邪而有余<br/>宁可信其有，不可信其无<br/>竹篱茅舍风光好，道院僧堂终不如<br/>命里有时终须有，命里无时莫强求<br/>道院迎仙客，书堂隐相儒<br/>庭栽栖凤竹，池养化龙鱼<br/>结交须胜己，似我不如无<br/>但看三五日，相见不如初<br/>人情似水分高下，世事如云任卷舒<br/>会说说都是，不会说无礼<br/>磨刀恨不利，刀利伤人指<br/>求财恨不得，财多害自己<br/>知足常足，终身不辱<br/>知止常止，终身不耻<br/>有福伤财，无福伤己<br/>差之毫厘，失之千里<br/>若登高必自卑，若涉远必自迩<br/>三思而行，再思可矣<br/>使口不如自走，求人不如求己<br/>小时是兄弟，长大各乡里<br/>妒财莫妒食，怨生莫怨死<br/>人见白头嗔，我见白头喜<br/>多少少年亡，不到白头死<br/>墙有逢，壁有耳<br/>好事不出门，恶事传千里<br/>贼是小人，知过君子<br/>君子固穷，小人穷斯滥也<br/>贫穷自在，富贵多忧<br/>不以我为德，反以我为仇<br/>宁向直中取，不可曲中求<br/>人无远虑，必有近忧<br/>知我者为我心忧，不知我者谓我何求<br/>晴天不肯去，只待雨淋头<br/>成事莫说，覆水难收<br/>是非只为多开口，烦恼皆因强出头<br/>忍得一时之气，免得百日之忧<br/>近来学得乌龟法，得缩头时且缩头<br/>惧法朝朝乐，欺公日日忧<br/>人生一世，草生一春<br/>黑发不知勤学早，看看又是白头翁<br/>月到十五光明少，人到中年万事休<br/>儿孙自有儿孙福，莫为儿孙作马牛<br/>人生不满百，常怀千岁忧<br/>今朝有酒今朝醉，明日愁来明日忧<br/>路逢险处难回避，事到头来不自由<br/>药能医假病，酒不解真愁<br/>人贫不语，水平不流<br/>一家有女百家求，一马不行百马忧<br/>有花方酌酒，无月不登楼<br/>三杯通大道，一醉解千愁<br/>深山毕竟藏猛虎，大海终须纳细流<br/>惜花须检点，爱月不梳头<br/>大抵选他肌骨好，不擦红粉也风流<br/>受恩深处宜先退，得意浓时便可休<br/>莫待是非来入耳，从前恩爱反为仇<br/>留得五湖明月在，不愁无处下金钩<br/>休别有鱼处，莫恋浅滩头<br/>去时终须去，再三留不住<br/>忍一句，息一怒，饶一着，退一步<br/>三十不豪，四十不富，五十将来寻死路<br/>生不论魂，死不认尸<br/>父母恩深终有别，夫妻义重也分离<br/>人生似鸟同林宿，大限来时各自飞<br/>人善被人欺，马善被人骑<br/>人无横财不富，马无野草不肥<br/>人恶人怕天不怕，人善人欺天不欺<br/>善恶到头终有报，只争来早与来迟<br/>黄河尚有澄清日，岂可人无得运时<br/>得宠思辱，安居虑危<br/>念念有如临敌日，心心常似过桥时<br/>英雄行险道，富贵似花枝<br/>人情莫道春光好，只怕秋来有冷时<br/>送君千里，终须一别<br/>但将冷眼看螃蟹，看你横行到几时<br/>见事莫说，问事不知<br/>闲事休管，无事早归<br/>假缎染就真红色，也被旁人说是非<br/>善事可作，恶事莫为<br/>许人一物，千金不移<br/>龙生龙子，虎生豹儿<br/>龙游浅水遭虾戏，虎落平阳被犬欺<br/>一举首登龙虎榜，十年身到风凰池<br/>十年窗下无人问，一举成名天下知<br/>酒债寻常行处有，人生七十古来稀<br/>养儿待老，积谷防饥<br/>鸡豚狗彘之畜，无失其时<br/>数家之口，可以无饥矣<br/>常将有日思无日，莫把无时当有时<br/>时来风送腾王阁，运去雷轰荐福碑<br/>入门休问荣枯事，观看容颜便得知<br/>官清书吏瘦，神灵庙祝肥<br/>息却雷霆之怒，罢却虎狼之威<br/>饶人算人之本，输人算人之机<br/>好言难得，恶语易施<br/>一言既出，驷马难追<br/>道吾好者是吾贼，道吾恶者是吾师<br/>路逢侠客须呈剑，不是才人莫献诗<br/>三人同行，必有我师，择其善者而从之，其不善者而改之<br/>少壮不努力，老大徒悲伤<br/>人有善愿，天必佑之<br/>莫饮卯时酒，昏昏醉到酉<br/>莫骂酉时妻，一夜受孤凄<br/>种麻得麻，种豆得豆<br/>天眼恢恢，疏而不漏<br/>见官莫向前，做客莫在后<br/>宁添一斗，莫添一口<br/>螳螂捕蝉，岂知黄雀在后<br/>不求金玉重重贵，但愿儿孙个个贤<br/>一日夫妻，百世姻缘<br/>百世修来同船渡，千世修来共枕眠<br/>杀人一万，自损三千<br/>伤人一语，利如刀割<br/>枯木逢春犹再发，人无两度再少年<br/>未晚先投宿，鸡鸣早看天<br/>将相胸前堪走马，公候肚里好撑船<br/>富人思来年，穷人思眼前<br/>世上若要人情好，赊去物件莫取钱<br/>死生有命，富贵在天<br/>击石原有火，不击乃无烟<br/>为学始知道，不学亦徒然<br/>莫笑他人老，终须还到老<br/>但能依本分，终须无烦恼<br/>君子爱财，取之有道<br/>贞妇爱色，纳之以礼<br/>善有善报，恶有恶报<br/>不是不报，日子不到<br/>人而无信，不知其可也<br/>一人道好，千人传实<br/>凡事要好，须问三老<br/>若争小可，便失大道<br/>年年防饥，夜夜防盗<br/>学者如禾如稻，不学者如蒿如草<br/>遇饮酒时须饮酒，得高歌处且高歌<br/>因风吹火，用力不多<br/>不因渔父引，怎得见波涛<br/>无求到处人情好，不饮从他酒价高<br/>知事少时烦恼少，识人多处是非多<br/>入山不怕伤人虎，只怕人情两面刀<br/>强中更有强中手，恶人须用恶人磨<br/>会使不在家豪富，风流不用着衣多<br/>光阴似箭，日月如梭<br/>天时不如地利，地利不如人和<br/>黄金未为贵，安乐值钱多<br/>世上万般皆下品，思量唯有读书高<br/>世间好语书说尽，天下名山僧占多<br/>为善最乐，为恶难逃<br/>羊有跪乳之恩，鸦有反哺之义<br/>你急他未急，人闲心不闲<br/>隐恶扬善，执其两端<br/>妻贤夫祸少，子孝父心宽<br/>既坠釜甑，反顾无益<br/>翻覆之水，收之实难<br/>人生知足何时足，人老偷闲且是闲<br/>但有绿杨堪系马，处处有路透长安<br/>见者易，学者难<br/>莫将容易得，便作等闲看<br/>用心计较般般错，退步思量事事难<br/>道路各别，养家一般<br/>从俭入奢易，从奢入俭难<br/>知音说与知音听，不是知音莫与弹<br/>点石化为金，人心犹未足<br/>信了肚，卖了屋<br/>他人观花，不涉你目<br/>他人碌碌，不涉你足<br/>谁人不爱子孙贤，谁人不爱千钟粟<br/>莫把真心空计较，五行不是这题目<br/>与人不和，劝人养鹅<br/>与人不睦，劝人架屋<br/>但行好事，莫问前程<br/>河狭水急，人急计生<br/>明知山有虎，莫向虎山行<br/>路不行不到，事不为不成<br/>人不劝不善，钟不打不鸣<br/>无钱方断酒，临老始看经<br/>点塔七层，不如暗处一灯<br/>万事劝人休瞒昧，举头三尺有神明<br/>但存方寸土，留与子孙耕<br/>灭却心头火，剔起佛前灯<br/>惺惺常不足，懵懵作公卿<br/>众星朗朗，不如孤月独明<br/>兄弟相害，不如自生<br/>合理可作，小利莫争<br/>牡丹花好空入目，枣花虽小结实成<br/>欺老莫欺小，欺人心不明<br/>随分耕锄收地利，他时饱满谢苍天<br/>得忍且忍，得耐且耐<br/>不忍不耐，小事成大<br/>相论逞英雄，家计渐渐退<br/>贤妇令夫贵，恶妇令夫败<br/>一人有庆，兆民咸赖<br/>人老心未老，人穷志莫穷<br/>人无千日好，花无百日红<br/>杀人可恕，情理难容<br/>乍富不知新受用，乍贫难改旧家风<br/>座上客常满，樽中酒不空<br/>屋漏更遭连年雨，行船又遇打头风<br/>笋因落箨方成竹，鱼为奔波始化龙<br/>记得少年骑竹马，看看又是白头翁<br/>礼义生于富足，盗贼出于贫穷<br/>天上众星皆拱北，世间无水不朝东<br/>君子安平，达人知命<br/>忠言逆耳利于行，良药苦口利于病<br/>顺天者存，逆天者亡<br/>人为财死，鸟为食亡<br/>夫妻相合好，琴瑟与笙簧<br/>有儿贫不久，无子富不长<br/>善必寿老，恶必早亡<br/>爽口食多偏作药，快心事过恐生殃<br/>富贵定要安本分，贫穷不必枉思量<br/>画水无风空作浪，绣花虽好不闻香<br/>贪他一斗米，失却半年粮<br/>争他一脚豚，反失一肘羊<br/>龙归晚洞云犹湿，麝过春山草木香<br/>平生只会量人短，何不回头把自量<br/>见善如不及，见恶如探汤<br/>人贫志短，马瘦毛长<br/>自家心里急，他人未知忙<br/>贫无达士将金赠，病有高人说药方<br/>触来莫与说，事过心清凉<br/>秋至满山多秀色，春来无处不花香<br/>凡人不可貌相，海水不可斗量<br/>清清之水，为土所防<br/>济济之士，为酒所伤<br/>蒿草之下，或有兰香<br/>茅茨之屋，或有侯王<br/>无限朱门生饿殍，几多白屋出卿<br/>醉后乾坤大，壶中日月长<br/>万事皆已定，浮生空白茫<br/>千里送毫毛，礼轻仁义重<br/>一人传虚，百人传实<br/>世事明如镜，前程暗似漆<br/>光阴黄金难买，一世如驹过隙<br/>良田万倾，日食一升<br/>大厦千间，夜眠八尺<br/>千经万典，孝义为先<br/>一字入公门，九牛拖不出<br/>衙门八字开，有理无钱莫进来<br/>富从升合起，贫因不算来<br/>家中无才子，官从何处来<br/>万事不由人计较，一生都是命安排<br/>急行慢行，前程只有多少路<br/>人间私语，天闻若雷<br/>暗室亏心，神目如电<br/>一毫之恶，劝人莫作<br/>一毫之善，与人方便<br/>欺人是祸，饶人是福<br/>天眼恢恢，报应甚速<br/>圣贤言语，神钦鬼伏<br/>人各有心，心各有见<br/>口说不如身逢，耳闻不如目见<br/>养军千日，用在一朝<br/>国清才子贵，家富小儿骄<br/>利刀割体痕易合，恶语伤人恨不消<br/>公道世间唯白发，贵人头上不曾饶<br/>有钱堪出众，无衣懒出门<br/>为官须作相，及第必争先<br/>苗从地发，树向枝分<br/>父子和而家不退，兄弟和而家不分<br/>官有正条，民有和约<br/>闲时不烧香，急时抱佛脚<br/>幸生太平无事日，恐逢年老不多时<br/>国乱思良将，家贫思贤妻<br/>池塘积水须防旱，田地勤耕足养家<br/>根深不怕风摇动，树正无愁月影斜<br/>奉劝君子，各宜守己<br/>只此程式，万无一失。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">-文学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习//" class="article-tag-list-link color4">-学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/21/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -471,8 +723,8 @@ var example1 = new Vue({
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
